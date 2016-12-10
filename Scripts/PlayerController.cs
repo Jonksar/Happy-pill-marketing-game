@@ -24,8 +24,6 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Update () {
-		Debug.Log (attackSprites);
-
 		direction = Input.GetAxis("Horizontal");
 
 		if (attackingLeft || attackingRight) {

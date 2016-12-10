@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour {
 	public Direction direction;
 
 	private Rigidbody2D rigidBody;
-	private SpriteRenderer renderer;
+	private SpriteRenderer spriteRenderer;
 	private int blinking = 0;
 	private int blinkFrameDelta = 4;
 	private float hitImpulseCoefficient = 3;
@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour {
 			GetComponent<BoxCollider2D>().enabled = false;
 			blinking = 1;
 
-			if (false && Random.value > 0.5f) {
+			if (Random.value > 0.5f) {
 				Die();
 			} else {
 				DieSlide();
@@ -37,12 +37,12 @@ public class Enemy : MonoBehaviour {
 	void Start () {
 		GetComponent<SpriteRenderer>().flipX = direction == Direction.left;
 		rigidBody = GetComponent<Rigidbody2D>();
-		renderer = GetComponent<SpriteRenderer>();
+		spriteRenderer = GetComponent<SpriteRenderer>();
 	}
 
 	void Update () {
 		if (blinking > 0) {
-			renderer.enabled = (blinking / blinkFrameDelta) % 2 == 0;
+			spriteRenderer.enabled = (blinking / blinkFrameDelta) % 2 == 0;
 			++blinking;
 		}
 
