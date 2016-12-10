@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 273dd9a1069c4644d992aff40ab61575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj: {fileID: 1830044402990216, guid: ae528eb9ce904994d9e85ead73346389, type: 2}
+  obj: {fileID: 1647640400936666, guid: bdfa8174ab16e4148aa3ab756fed7ab9, type: 2}
   direction: 0
   spawnRateSeconds: 4
 --- !u!114 &114916101468954022
@@ -124,6 +124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 273dd9a1069c4644d992aff40ab61575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj: {fileID: 1830044402990216, guid: ae528eb9ce904994d9e85ead73346389, type: 2}
+  obj: {fileID: 1647640400936666, guid: bdfa8174ab16e4148aa3ab756fed7ab9, type: 2}
   direction: 1
   spawnRateSeconds: 4
