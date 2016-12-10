@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
-
-    public float speed 
+public class SoundManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
