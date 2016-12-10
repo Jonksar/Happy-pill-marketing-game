@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour {
 				timeRemaining = 0.2f;
 
 				spriteRenderer.flipX = left;
-				Invoke("AttackOn", 0.1f);
+				AttackOn();
 				enemy.Hit(10);
 			}
 		}
