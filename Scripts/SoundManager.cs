@@ -16,7 +16,9 @@ public class SoundManager : MonoBehaviour {
 	[Range(0f, 1f)] public float maxVolume = 1f;
 
 	[Header("Sound Effects")]
-	public AudioClip[] hitSfxs;
+	public AudioClip[] punchSFXs;
+	public AudioClip[] monsterHitSFXs;
+	public AudioClip[] playerHitSFXs;
 
 	[Header("Music (sorted by speed)")]
 	public AudioClip[] happyThemes;
@@ -45,6 +47,7 @@ public class SoundManager : MonoBehaviour {
 		sfx_obj.transform.SetParent (this.transform);
 
 		InvokeRepeating ("smth", 0f, 21.053f - 2.105f);
+		InvokeRepeating ("PlayMonsterHitSFX", 0f, 0.2f);
 	}
 	
 	// Update is called once per frame
@@ -71,6 +74,19 @@ public class SoundManager : MonoBehaviour {
 	public void smth() {
 		this.ChangeMusic (this.musicIndexCounter % this.menuThemes.Length, musicType.MenuMusic);
 		this.musicIndexCounter++;
+	}
+
+	public void PlayPunchSFX() {
+		this.sfx_player.PlaySFX(monsterHitSFXs[Random.Range(0, punchSFXs.Length - 1)]);
+	}
+
+	public void PlayMonsterHitSFX() {
+		this.sfx_player.PlaySFX (monsterHitSFXs [Random.Range (0, monsterHitSFXs.Length - 1)]);
+	}
+
+	public void PlayPlayerHitSFX() {
+		this.sfx_player.PlaySFX (playerHitSFXs [Random.Range (0, playerHitSFXs.Length - 1)]);
+		
 	}
 
 }
