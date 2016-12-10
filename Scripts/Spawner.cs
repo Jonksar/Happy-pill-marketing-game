@@ -5,10 +5,11 @@ using UnityEngine;
 public class Spawner : MonoBehaviour {
 	public GameObject obj;
 	public Direction direction;
-	public float spawnRateSeconds;
+	public float spawnMinRateSeconds;
+	public float spawnMaxRateSeconds;
 
 	public void Start() {
-		InvokeRepeating("Spawn", spawnRateSeconds, spawnRateSeconds);
+		Spawn();
 	}
 
 	private void Spawn() {
@@ -16,5 +17,7 @@ public class Spawner : MonoBehaviour {
 		Enemy enemy = o.GetComponent<Enemy>();
 
 		enemy.direction = direction;
+
+		Invoke("Spawn", Random.value * (spawnMaxRateSeconds - spawnMinRateSeconds) + spawnMinRateSeconds);
 	}
 }
