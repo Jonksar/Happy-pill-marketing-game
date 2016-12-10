@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour {
 
 	private Rigidbody2D rigidBody;
 	private SpriteRenderer spriteRenderer;
+	private SoundManager sounds;
 	private int blinking = 0;
 	private int blinkFrameDelta = 4;
 	private float hitImpulseCoefficient = 3;
@@ -27,21 +28,26 @@ public class Enemy : MonoBehaviour {
 		if (IsDead()) {
 			GetComponent<BoxCollider2D>().enabled = false;
 			blinking = 1;
+			sounds.PlayMonsterHitSFX();
 
 			if (Random.value > 0.5f) {
 				Die();
 			} else {
 				DieSlide();
 			}
+		} else {
+			sounds.PlayPunchSFX();
 		}
 	}
 
 	void Start () {
 		enemies.Add(this);
 
-		GetComponent<SpriteRenderer>().flipX = direction == Direction.left;
 		rigidBody = GetComponent<Rigidbody2D>();
 		spriteRenderer = GetComponent<SpriteRenderer>();
+		spriteRenderer.flipX = direction == Direction.left;
+
+		sounds = GameObject.Find("SoundManager").GetComponent<SoundManager>();
 	}
 
 	void OnDestroy() {
