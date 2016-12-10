@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-	public float speed = 1.0f;
 	public bool attackingLeft = false;
 	public bool attackingRight = false;
 	public Sprite idle;
@@ -13,21 +12,29 @@ public class PlayerController : MonoBehaviour {
 	public Sprite attack3;
 	public Sprite attack4;
 
+	private enum State {
+		Idle,
+		Attack,
+		WallJump
+	};
+
 	private SpriteRenderer spriteRenderer;
-	private Rigidbody2D rigidBody;
 	private Sprite[] attackSprites = new Sprite[3];
-	private float hitAreaWidth = 3;
-	private float direction;
-	private const float minX = -5;
-	private const float maxX = -minX;
-	private float xVel = 0;
+
+	private const float hitAreaWidth = 4;
+	private const float maxDistanceFromCentre = 7;
+
+	private State state = State.Idle;
+	private Vector3 startPos;
+	private Vector3 desiredPos;
+	private float timeRemaining = 0.0f;
+
 	private System.Random rnd = new System.Random();
 	private List<Enemy> leftSide = new List<Enemy>();
 	private List<Enemy> rightSide = new List<Enemy>();
 
 	void Start() {
 		spriteRenderer = GetComponent<SpriteRenderer>();
-		rigidBody = GetComponent<Rigidbody2D>();
 
 		attackSprites[0] = attack1;
 		attackSprites[1] = attack2;
@@ -36,44 +43,59 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Update () {
-		direction = Input.GetAxis("Horizontal");
-
-		if (direction == 0 || attackingLeft || attackingRight) {
-			return;
-		}
+		timeRemaining = Math.Max(0.0f, timeRemaining - Time.deltaTime);
+		Vector3 pos = transform.position;
+		float xAxis = Input.GetAxis("Horizontal");
+		bool left = xAxis < 0;
+		bool right = xAxis > 0;
 
 		UpdateLists();
 
-		attackingLeft = direction < 0;
-		attackingRight = direction > 0;
-		bool attack = attackingLeft || attackingRight;
-		float delta = attackingLeft ? -1 : 1;
-
-		if (attack) {
-			List<Enemy> list = attackingLeft ? leftSide : rightSide;
+		if (state == State.Idle && (left || right)) {
+			List<Enemy> list = left ? leftSide : rightSide;
 
 			if (list.Count > 0) {
 				Enemy enemy = list[0];
 				list.RemoveAt(0);
-				setX(enemy.transform.position.x + delta);
-				enemy.Hit(4);
-			} else {
-				attack = false;
-				setX(transform.position.x + delta);
-				Invoke("OnAttackEnd", 0.05f);
+
+				state = State.Attack;
+				desiredPos = new Vector3(enemy.transform.position.x, pos.y, pos.z);
+				startPos = pos;
+				timeRemaining = 0.2f;
+
+				spriteRenderer.flipX = left;
+				Invoke("AttackOn", 0.1f);
+				enemy.Hit(10);
 			}
 		}
 
-		if (attack) {
-			Invoke("AttackOn", 0.05f);
-			spriteRenderer.sprite = attack4;
+		if (state == State.Attack) {
+			transform.position = Vector3.Lerp(desiredPos, startPos, timeRemaining);
+
+			if (timeRemaining == 0.0f) {
+				if (Math.Abs(transform.position.x) > maxDistanceFromCentre) {
+					state = State.WallJump;
+					desiredPos = Vector3.zero;
+					startPos = pos;
+					timeRemaining = 0.2f;
+					spriteRenderer.flipX = !spriteRenderer.flipX;
+				} else {
+					state = State.Idle;
+				}
+			}			
 		}
 
-		spriteRenderer.flipX = attackingLeft;
+		if (state == State.WallJump) {
+			transform.position = Vector3.Lerp(desiredPos, startPos, timeRemaining);
+
+			if (timeRemaining == 0.0f) {
+				state = State.Idle;
+			}
+		}
 	}
 
 	void AttackOn() {
-		Invoke("OnAttackEnd", 0.35f);
+		Invoke("OnAttackEnd", 0.1f);
 		spriteRenderer.sprite = attackSprites[rnd.Next(0,3)];
 		Destroy(GetComponent<BoxCollider2D>());  
 		gameObject.AddComponent<BoxCollider2D>();
@@ -112,10 +134,5 @@ public class PlayerController : MonoBehaviour {
 
 	private bool CloseEnoughToMe(Vector3 pos) {
 		return Mathf.Abs(transform.position.x - pos.x) < hitAreaWidth;
-	}
-
-	private void setX(float x) {
-		Vector3 pos = transform.position;
-		transform.position = new Vector3(Math.Min(maxX, Math.Max(minX, x)), pos.y, pos.z);
 	}
 }
