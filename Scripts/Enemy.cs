@@ -26,4 +26,9 @@ public class Enemy : MonoBehaviour {
 			//Destroy(gameObject);
 		}
 	}
+
+	void OnTriggerEnter2D(Collider2D other) {
+		Debug.Log ("Hi");
+		Debug.Log (other);
+	}
 }
