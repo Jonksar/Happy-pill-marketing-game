@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour {
 		transform.position += new Vector3(inc, 0, 0);
 
 		if (transform.position.x > -slop && transform.position.x < slop) {
-			Destroy(gameObject);
+			//Destroy(gameObject);
 		}
 	}
 }
