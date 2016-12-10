@@ -14,17 +14,21 @@ public class PlayerController : MonoBehaviour {
 	public Sprite attack4;
 
 	private SpriteRenderer spriteRenderer;
+	private Rigidbody2D rigidBody;
 	private Sprite[] attackSprites = new Sprite[3];
 	private float hitAreaWidth = 3;
 	private float direction;
 	private const float minX = -5;
 	private const float maxX = -minX;
+	private float xVel = 0;
 	private System.Random rnd = new System.Random();
 	private List<Enemy> leftSide = new List<Enemy>();
 	private List<Enemy> rightSide = new List<Enemy>();
 
-	void Start () {
-		spriteRenderer = GetComponent<SpriteRenderer> ();
+	void Start() {
+		spriteRenderer = GetComponent<SpriteRenderer>();
+		rigidBody = GetComponent<Rigidbody2D>();
+
 		attackSprites[0] = attack1;
 		attackSprites[1] = attack2;
 		attackSprites[2] = attack3;
@@ -52,10 +56,10 @@ public class PlayerController : MonoBehaviour {
 				Enemy enemy = list[0];
 				list.RemoveAt(0);
 				setX(enemy.transform.position.x + delta);
-				enemy.Hit(10);
+				enemy.Hit(5);
 			} else {
 				attack = false;
-				setX(transform.position.x + delta * hitAreaWidth);
+				setX(transform.position.x + delta);
 				Invoke("OnAttackEnd", 0.35f);
 			}
 		}

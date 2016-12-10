@@ -45,9 +45,6 @@ public class SoundManager : MonoBehaviour {
 
 		m_obj.transform.SetParent (this.transform);
 		sfx_obj.transform.SetParent (this.transform);
-
-		InvokeRepeating ("smth", 0f, 21.053f - 2.105f);
-		InvokeRepeating ("PlayMonsterHitSFX", 0f, 0.2f);
 	}
 	
 	// Update is called once per frame
