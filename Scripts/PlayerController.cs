@@ -36,35 +36,24 @@ public class PlayerController : MonoBehaviour {
 			return;
 		}
 
+		UpdateLists();
+
 		attackingLeft = direction < 0;
 		attackingRight = direction > 0;
+		bool attack = attackingLeft || attackingRight;
+		float delta = attackingLeft ? -1 : 1;
 
-		UpdateLists();
-		Vector3 pos = transform.position;
-		bool attack = false;
+		if (attack) {
+			List<Enemy> list = attackingLeft ? leftSide : rightSide;
 
-		if (attackingLeft) {
-			if (leftSide.Count > 0) {
-				attack = true;
-				Enemy enemy = leftSide[0];
-				leftSide.RemoveAt(0);
-				setX(enemy.transform.position.x + 1.0f);
+			if (list.Count > 0) {
+				Enemy enemy = list[0];
+				list.RemoveAt(0);
+				setX(enemy.transform.position.x + delta);
 				enemy.Hit(10);
 			} else {
-				setX(transform.position.x - hitAreaWidth);
-				Invoke("OnAttackEnd", 0.35f);
-			}
-		}
-
-		if (attackingRight) {
-			if (rightSide.Count > 0) {
-				attack = true;
-				Enemy enemy = rightSide[0];
-				rightSide.RemoveAt(0);
-				setX(enemy.transform.position.x - 1.0f);
-				enemy.Hit(10);
-			} else {
-				setX(transform.position.x + hitAreaWidth);
+				attack = false;
+				setX(transform.position.x + delta * hitAreaWidth);
 				Invoke("OnAttackEnd", 0.35f);
 			}
 		}
