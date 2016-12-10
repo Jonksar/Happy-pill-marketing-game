@@ -19,10 +19,12 @@ public class Enemy : MonoBehaviour {
 	private int blinkFrameDelta = 4;
 	private float hitImpulseCoefficient = 3;
 
+	public static List<Enemy> enemies = new List<Enemy>();
+
 	public void Hit(int damage) {
 		health -= damage;
 
-		if (health <= 0) {
+		if (IsDead()) {
 			GetComponent<BoxCollider2D>().enabled = false;
 			blinking = 1;
 
@@ -35,9 +37,15 @@ public class Enemy : MonoBehaviour {
 	}
 
 	void Start () {
+		enemies.Add(this);
+
 		GetComponent<SpriteRenderer>().flipX = direction == Direction.left;
 		rigidBody = GetComponent<Rigidbody2D>();
 		spriteRenderer = GetComponent<SpriteRenderer>();
+	}
+
+	void OnDestroy() {
+		enemies.Remove(this);
 	}
 
 	void Update () {
@@ -46,12 +54,16 @@ public class Enemy : MonoBehaviour {
 			++blinking;
 		}
 
-		if (health <= 0) {
+		if (IsDead()) {
 			return;
 		}
 
 		float inc = Time.deltaTime * speed * (direction == Direction.left ? -1 : 1);
 		transform.position += new Vector3(inc, 0, 0);
+	}
+
+	public bool IsDead() {
+		return health <= 0;
 	}
 
 	private void DeathBlink() {
