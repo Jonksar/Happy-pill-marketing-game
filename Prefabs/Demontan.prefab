@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 50280567022055546}
   - component: {fileID: 61706598539669954}
   - component: {fileID: 61504900616814330}
+  - component: {fileID: 114141043459632696}
   m_Layer: 0
   m_Name: Demontan
   m_TagString: Untagged
@@ -92,6 +93,19 @@ BoxCollider2D:
   m_Offset: {x: -0.18638134, y: 0}
   serializedVersion: 2
   m_Size: {x: 3.1970453, y: 8.93}
+--- !u!114 &114141043459632696
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1647640400936666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 949017694906bc54d8fb0ea6ec2f5943, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverRadius: 0
+  hoverSpeed: 0
 --- !u!114 &114770501867347060
 MonoBehaviour:
   m_ObjectHideFlags: 1

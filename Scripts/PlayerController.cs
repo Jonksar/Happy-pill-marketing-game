@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour {
 	public Sprite attack1;
 	public Sprite attack2;
 	public Sprite attack3;
+	public Sprite attack4;
 
 	private SpriteRenderer spriteRenderer;
 	private Sprite[] attackSprites = new Sprite[3];
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour {
 		attackSprites[0] = attack1;
 		attackSprites[1] = attack2;
 		attackSprites[2] = attack3;
+		attackSprites [3] = attack4;
 	}
 
 	void Update () {
@@ -71,7 +73,7 @@ public class PlayerController : MonoBehaviour {
 
 		if (attack) {
 			Invoke("AttackOn", 0.15f);
-			spriteRenderer.sprite = attack3;
+			spriteRenderer.sprite = attack4;
 		}
 
 		spriteRenderer.flipX = attackingLeft;
@@ -79,7 +81,7 @@ public class PlayerController : MonoBehaviour {
 
 	void AttackOn() {
 		Invoke("OnAttackEnd", 0.35f);
-		spriteRenderer.sprite = attackSprites[rnd.Next(0,2)];
+		spriteRenderer.sprite = attackSprites[rnd.Next(0,3)];
 		Destroy(GetComponent<BoxCollider2D>());  
 		gameObject.AddComponent<BoxCollider2D>();
 	}
