@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour {
 	};
 
 	private SpriteRenderer spriteRenderer;
-	private Sprite[] attackSprites = new Sprite[3];
+	private Sprite[] attackSprites = new Sprite[4];
 
 	private const float hitAreaWidth = 4;
 	private const float maxDistanceFromCentre = 7;
