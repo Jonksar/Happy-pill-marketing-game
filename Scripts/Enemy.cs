@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour {
 	public Direction direction;
 
 	void Start () {
-		// ...
+		this.GetComponent<SpriteRenderer>().flipX = direction == Direction.left;
 	}
 
 	void Update () {
