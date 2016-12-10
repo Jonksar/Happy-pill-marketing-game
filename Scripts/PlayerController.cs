@@ -3,20 +3,51 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-	private SpriteRenderer sprite;
 	public float speed = 1.0f;
+	public bool attackingLeft = false;
+	public bool attackingRight = false;
 
-	// Use this for initialization
+	private SpriteRenderer sprite;
+
 	void Start () {
 		sprite = this.GetComponent<SpriteRenderer>();
 	}
 
-	// Update is called once per frame
 	void Update () {
-		Vector3 pos = transform.position;
-		float inc = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
+		float direction = Input.GetAxis("Horizontal");
 
-		sprite.flipX = inc < 0;
-		transform.position += new Vector3(inc, 0, 0);
+		if (attackingLeft || attackingRight) {
+			return;
+		}
+
+		if (direction < 0) {
+			attackingLeft = true;
+			Invoke("OnAttackEnd", 0.5f);
+		}
+
+		if (direction > 0) {
+			attackingRight = true;
+			Invoke ("OnAttackEnd", 0.5f);
+		}
+	}
+
+	void OnAttackEnd() {
+		attackingLeft = attackingRight = false;
+	}
+
+	void OnTriggerEnter2D(Collider2D other) {
+		GameObject obj = other.gameObject;
+
+		bool onLeft = obj.transform.position.x < transform.position.x;
+		bool onRight = !onLeft;
+
+		if ((onLeft && attackingLeft) || (onRight && attackingRight)) {
+			//Destroy(obj);
+			Debug.Log("Die");
+		} else {
+			Debug.Log("Ouch");
+		}
+
+		Destroy(obj);
 	}
 }
