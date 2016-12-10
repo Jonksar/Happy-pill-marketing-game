@@ -11,9 +11,11 @@ public class DemontanHovering : MonoBehaviour {
 		hoverOffset = Random.value;
 	}
 
-	void Update () {
-		Vector3 pos = transform.position;
-		long milliseconds = System.DateTime.Now.Ticks / 100000 % 31416;
-		transform.position = new Vector3 (pos.x, originY + Mathf.Sin (hoverOffset + milliseconds / 30.0f) * 0.4f, pos.z);
+	void Update() {
+		if (!GetComponent<Enemy>().IsDead()) {
+			Vector3 pos = transform.position;
+			long milliseconds = System.DateTime.Now.Ticks / 100000 % 31416;
+			transform.position = new Vector3(pos.x, originY + Mathf.Sin (hoverOffset + milliseconds / 30.0f) * 0.4f, pos.z);
+		}
 	}
 }
