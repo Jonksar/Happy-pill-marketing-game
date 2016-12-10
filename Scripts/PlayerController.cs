@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour {
 		Vector3 pos = transform.position;
 		float inc = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
 
-		sprite.flipX = inc > 0;
+		sprite.flipX = inc < 0;
 		transform.position += new Vector3(inc, 0, 0);
 	}
 }
