@@ -7,16 +7,14 @@ public class Spawner : MonoBehaviour {
 	public Direction direction;
 	public float spawnRateSeconds;
 
-	void Start () {
+	public void Start() {
 		InvokeRepeating("Spawn", spawnRateSeconds, spawnRateSeconds);
 	}
 
-	void Spawn() {
-		//Enemy enemy = (Enemy)Instantiate(obj);
-		//enemy.direction = direction;
+	private void Spawn() {
 		GameObject o = Instantiate(obj, transform.position, transform.rotation);
-		Enemy test = o.GetComponent<Enemy>();
-		//test.transform.position = transform;
-		test.direction = direction;
+		Enemy enemy = o.GetComponent<Enemy>();
+
+		enemy.direction = direction;
 	}
 }
