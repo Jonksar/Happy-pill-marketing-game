@@ -6,15 +6,27 @@ public class PlayerController : MonoBehaviour {
 	public float speed = 1.0f;
 	public bool attackingLeft = false;
 	public bool attackingRight = false;
+	public Sprite idle;
+	public Sprite attack1;
+	public Sprite attack2;
+	public Sprite attack3;
+	private float direction;
 
-	private SpriteRenderer sprite;
+	private SpriteRenderer spriteRenderer;
+	private Sprite[] attackSprites = new Sprite[3];
+	System.Random rnd = new System.Random();
 
 	void Start () {
-		sprite = this.GetComponent<SpriteRenderer>();
+		spriteRenderer = GetComponent<SpriteRenderer> ();
+		attackSprites[0] = attack1;
+		attackSprites[1] = attack2;
+		attackSprites[2] = attack3;
 	}
 
 	void Update () {
-		float direction = Input.GetAxis("Horizontal");
+		Debug.Log (attackSprites);
+
+		direction = Input.GetAxis("Horizontal");
 
 		if (attackingLeft || attackingRight) {
 			return;
@@ -22,17 +34,44 @@ public class PlayerController : MonoBehaviour {
 
 		if (direction < 0) {
 			attackingLeft = true;
-			Invoke("OnAttackEnd", 0.5f);
+			Invoke ("AttackOn", 0.15f);
+			spriteRenderer.sprite = attack3;
+			if (!spriteRenderer.flipX) {
+				spriteRenderer.flipX = true;
+			}
 		}
 
 		if (direction > 0) {
 			attackingRight = true;
-			Invoke ("OnAttackEnd", 0.5f);
+			Invoke ("AttackOn", 0.15f);
+			spriteRenderer.sprite = attack3;
+			if (spriteRenderer.flipX) {
+				spriteRenderer.flipX = false;
+			} 
 		}
 	}
 
+	void AttackOn() {
+		if (direction > 0) {
+			Invoke ("OnAttackEnd", 0.35f);
+			spriteRenderer.sprite = attackSprites[rnd.Next(1,2)];
+			Destroy(GetComponent<BoxCollider2D>());  
+			gameObject.AddComponent<BoxCollider2D>();
+
+		} else {
+			Invoke("OnAttackEnd", 0.35f);
+			spriteRenderer.sprite = attackSprites[rnd.Next(1,2)];
+			Destroy(GetComponent<BoxCollider2D>());  
+			gameObject.AddComponent<BoxCollider2D>();
+		}
+			
+	}
+
 	void OnAttackEnd() {
+		spriteRenderer.sprite = idle;
 		attackingLeft = attackingRight = false;
+		Destroy(GetComponent<BoxCollider2D>());  
+		gameObject.AddComponent<BoxCollider2D>();
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
