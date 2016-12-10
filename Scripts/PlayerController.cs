@@ -75,14 +75,14 @@ public class PlayerController : MonoBehaviour {
 			if (timeRemaining == 0.0f) {
 				if (Math.Abs(transform.position.x) > maxDistanceFromCentre) {
 					state = State.WallJump;
-					desiredPos = Vector3.zero;
+					desiredPos = new Vector3(0, -0.6f, 0);
 					startPos = pos;
 					timeRemaining = 0.2f;
 					spriteRenderer.flipX = !spriteRenderer.flipX;
 				} else {
 					state = State.Idle;
 				}
-			}			
+			}
 		}
 
 		if (state == State.WallJump) {
