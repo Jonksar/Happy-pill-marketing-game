@@ -37,17 +37,16 @@ public class PlayerController : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other) {
 		GameObject obj = other.gameObject;
+		Enemy enemy = obj.GetComponent<Enemy>();
 
 		bool onLeft = obj.transform.position.x < transform.position.x;
 		bool onRight = !onLeft;
 
 		if ((onLeft && attackingLeft) || (onRight && attackingRight)) {
-			//Destroy(obj);
-			Debug.Log("Die");
+			enemy.Hit(10);
 		} else {
-			Debug.Log("Ouch");
+			enemy.transform.Translate(Vector3.left);
+			Destroy(obj);
 		}
-
-		Destroy(obj);
 	}
 }
