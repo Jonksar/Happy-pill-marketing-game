@@ -71,10 +71,46 @@ MonoBehaviour:
     m_RotationOrder: 0
   fadeTime: 10
   maxVolume: 1
-  hitSfxs: []
+  punchSFXs:
+  - {fileID: 8300000, guid: 94f1a89722ffe8b44936fc40c5c85fad, type: 3}
+  - {fileID: 8300000, guid: 6190acf1c9bf88f4782fbfe4926bb7e6, type: 3}
+  - {fileID: 8300000, guid: 39a8a4613903f1041884750a6fec4846, type: 3}
+  - {fileID: 8300000, guid: 5da424e0755403644b6c21e80ec2e676, type: 3}
+  - {fileID: 8300000, guid: 9693690d1f12a8c40ac539fd5b9d0fdc, type: 3}
+  - {fileID: 8300000, guid: a9f7550fc3a1af54c814eacaf9ff06e2, type: 3}
+  monsterHitSFXs:
+  - {fileID: 8300000, guid: 451b28ca16e8cc34c8d3eb593d723092, type: 3}
+  - {fileID: 8300000, guid: 19a78026dff987f4d887ad03ad0566ed, type: 3}
+  - {fileID: 8300000, guid: a27adca735f027a4da9f1d652fc924c2, type: 3}
+  - {fileID: 8300000, guid: 97964655ed04c7e4e845be3cfac8dd37, type: 3}
+  - {fileID: 8300000, guid: e3a5db20440aa674a8b7b15d5bf110a9, type: 3}
+  - {fileID: 8300000, guid: 7d134d8b471a279448fded8da171c393, type: 3}
+  - {fileID: 8300000, guid: b4c0ea42297834b47b32b7ae00bd3106, type: 3}
+  - {fileID: 8300000, guid: a995993d3c278bf4faa7f4febe3a0dd6, type: 3}
+  - {fileID: 8300000, guid: 06dc3e3e4fa234a4b9fbdb4d3bc24ad2, type: 3}
+  - {fileID: 8300000, guid: b9ed6370d65291b45a27e391f5bf24b1, type: 3}
+  - {fileID: 8300000, guid: c98ba8c957a2bdd44b5288aa4221a2f5, type: 3}
+  - {fileID: 8300000, guid: e2d4862aa6b33684d89d21f6811d7a59, type: 3}
+  - {fileID: 8300000, guid: 543ebe6fd3c459242a687d1edd88fae2, type: 3}
+  - {fileID: 8300000, guid: c0501fa9201bb684faac46621170cc0b, type: 3}
+  - {fileID: 8300000, guid: c74b5ba15fb3cf94b913832b240af628, type: 3}
+  - {fileID: 8300000, guid: 24d26da4497dafe4cb01bf4b74479bc8, type: 3}
+  playerHitSFXs:
+  - {fileID: 8300000, guid: c1cc3a82fedf2cc45a1abf418d83add5, type: 3}
+  - {fileID: 8300000, guid: e91a78dfa08dfc342ae17c6a2bd91ae1, type: 3}
+  - {fileID: 8300000, guid: 47b5f444d36fcb047ba753239ce6ee75, type: 3}
+  - {fileID: 8300000, guid: 46fca1783f04d994abd66e4ed50a3b8a, type: 3}
+  - {fileID: 8300000, guid: 34b0e962aa8fca347875c0fabe90b5d2, type: 3}
+  - {fileID: 8300000, guid: e62dd0379d8bf5d46a2388b7320a29e5, type: 3}
+  - {fileID: 8300000, guid: 1e0823406d961cf43b92505855dd1bad, type: 3}
+  - {fileID: 8300000, guid: 738c2284575f9f64dbb368faffddcfa9, type: 3}
+  - {fileID: 8300000, guid: 228dcaacaef39b348896233d39a42a33, type: 3}
   happyThemes: []
   sadThemes: []
-  menuThemes: []
+  menuThemes:
+  - {fileID: 8300000, guid: 8d798775cd65be449bba6722cfcede8c, type: 3}
+  - {fileID: 8300000, guid: a75915762d6bcb045a7f423770cce3d9, type: 3}
   fader: {fileID: 1229811501090740, guid: 6874be08a5492eb4496089c78aa90ac9, type: 2}
   serialPlayer: {fileID: 1087800306809192, guid: 78e9a1ecb3f749941ace2497ce65af4c,
     type: 2}
+  musicIndexCounter: 0
