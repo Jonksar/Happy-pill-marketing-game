@@ -56,16 +56,16 @@ public class PlayerController : MonoBehaviour {
 				Enemy enemy = list[0];
 				list.RemoveAt(0);
 				setX(enemy.transform.position.x + delta);
-				enemy.Hit(5);
+				enemy.Hit(4);
 			} else {
 				attack = false;
 				setX(transform.position.x + delta);
-				Invoke("OnAttackEnd", 0.35f);
+				Invoke("OnAttackEnd", 0.05f);
 			}
 		}
 
 		if (attack) {
-			Invoke("AttackOn", 0.15f);
+			Invoke("AttackOn", 0.05f);
 			spriteRenderer.sprite = attack4;
 		}
 
