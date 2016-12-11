@@ -7,6 +7,7 @@ public class Environment : MonoBehaviour {
 	public Sprite room1;
 	public Sprite room2;
 	public Sprite room3;
+	public Sprite room4;
 
 	public Sprite enemy1;
 	public Sprite enemy2;
@@ -31,6 +32,8 @@ public class Environment : MonoBehaviour {
 				ChangeEnvironment (1);
 			} else if (pushThisButton == 3) {
 				ChangeEnvironment (3);
+			} else if (pushThisButton == 4) {
+				ChangeEnvironment (4);
 			}
 		}
 		previous = pushThisButton;
@@ -58,6 +61,15 @@ public class Environment : MonoBehaviour {
 
 		if (i == 3) {
 			GetComponent<SpriteRenderer> ().sprite = room3;
+			foreach (Enemy x in Enemy.enemies) {
+				x.GetComponent<SpriteRenderer> ().sprite = enemy2;
+			}
+			spawnerL.spriteIndex = 2;
+			spawnerR.spriteIndex = 2;
+		}
+
+		if (i == 4) {
+			GetComponent<SpriteRenderer> ().sprite = room4;
 			foreach (Enemy x in Enemy.enemies) {
 				x.GetComponent<SpriteRenderer> ().sprite = enemy2;
 			}
