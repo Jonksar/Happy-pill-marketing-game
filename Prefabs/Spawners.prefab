@@ -114,6 +114,7 @@ MonoBehaviour:
   direction: 0
   spawnMinRateSeconds: 0.6
   spawnMaxRateSeconds: 2
+  spriteIndex: 1
 --- !u!114 &114916101468954022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -129,3 +130,4 @@ MonoBehaviour:
   direction: 1
   spawnMinRateSeconds: 0.6
   spawnMaxRateSeconds: 2
+  spriteIndex: 1

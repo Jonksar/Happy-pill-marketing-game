@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Update () {
-		if (totalTime >= 0.0f) {
+		if (totalTime > 0.0f) {
 			percentElapsed = Math.Min(1.0f, percentElapsed + Time.deltaTime / totalTime);
 		}
 
