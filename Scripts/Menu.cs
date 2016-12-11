@@ -20,7 +20,7 @@ public class Menu : MonoBehaviour {
 	private float titleDuration = 9;
 	private float blankDuration = 2;
 	private float fadeDuration = 2;
-	private float mainSoundInterval = 10;
+	private float mainSoundInterval = 7;
 	private SoundManager sounds;
 
 	void Start() {
@@ -30,7 +30,7 @@ public class Menu : MonoBehaviour {
 	}
 
 	void Update() {
-		if (elapsed == 0.0f) {
+		if (state == State.Start && elapsed == 0.0f) {
 			sounds.PlaySFX(sounds.glitchSFXs[1]);
 		}
 

@@ -14,13 +14,16 @@ public class Enemy : MonoBehaviour {
 	public int damage;
 	public Direction direction;
 
+	public Sprite dead;
+	public Sprite kicked;
+
 	private Rigidbody2D rigidBody;
 	private SpriteRenderer spriteRenderer;
 	private SoundManager sounds;
 	private int blinking = 0;
 	private int blinkFrameDelta = 4;
-	private const float hitXImpulse = 5;
-	private const float hitYImpulse = 6;
+	private const float hitXImpulse = 0;
+	private const float hitYImpulse = 0;
 
 	public static List<Enemy> enemies = new List<Enemy>();
 
@@ -81,12 +84,15 @@ public class Enemy : MonoBehaviour {
 	}
 
 	private void Die() {
+		spriteRenderer.sprite = dead;
+		transform.position = new Vector3 (transform.position.x, transform.position.y - 1.8f, transform.position.z);
 		blinkFrameDelta = 3;
 		// animation goes here
 		Invoke("DeathBlink", 0.5f);
 	}
 
 	private void DieImpulse() {
+		spriteRenderer.sprite = kicked;
 		float x = direction == Direction.left ? 1 : -1;
 		Vector3 impulse = new Vector3(x * hitXImpulse, hitYImpulse, 0);
 		rigidBody.AddForce(impulse, ForceMode2D.Impulse);
