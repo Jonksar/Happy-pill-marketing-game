@@ -5,6 +5,8 @@ using UnityEngine;
 public class SpriteChange : MonoBehaviour {
 	public Sprite room1Sprite;
 	public Sprite room2Sprite;
+	public Sprite room3Sprite;
+	public Sprite room4Sprite;
 	void Start () {
 		
 	}
@@ -18,6 +20,12 @@ public class SpriteChange : MonoBehaviour {
 			GetComponent<SpriteRenderer> ().sprite = room1Sprite;
 		}	
 		if (i == 2) {
+			GetComponent<SpriteRenderer> ().sprite = room2Sprite;
+		}
+		if (i == 3) {
+			GetComponent<SpriteRenderer> ().sprite = room2Sprite;
+		}
+		if (i == 4) {
 			GetComponent<SpriteRenderer> ().sprite = room2Sprite;
 		}
 	}
