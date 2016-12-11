@@ -9,10 +9,14 @@ public class Environment : MonoBehaviour {
 	public Sprite room3;
 	public Sprite room4;
 
-	public Sprite enemy1;
-	public Sprite enemy2;
-	public Sprite enemy3;
-	public Sprite enemy4;
+	public Sprite enemy1j;
+	public Sprite enemy2j;
+	public Sprite enemy3j;
+	public Sprite enemy4j;
+	public Sprite enemy1g;
+	public Sprite enemy2g;
+	public Sprite enemy3g;
+	public Sprite enemy4g;
 
 	public Spawner spawnerL;
 	public Spawner spawnerR;
@@ -46,7 +50,10 @@ public class Environment : MonoBehaviour {
 			GetComponent<SpriteRenderer> ().sprite = room1;
 			foreach (Enemy x in Enemy.enemies) {
 				//bug: changing everything to demontan now but should check if gamithra or joonatan
-				x.GetComponent<SpriteRenderer> ().sprite = enemy1;
+				if (x.name == "j")
+					x.GetComponent<SpriteRenderer> ().sprite = enemy1j;
+				else
+					x.GetComponent<SpriteRenderer> ().sprite = enemy1g;
 			}
 			spawnerL.spriteIndex = 1;
 			spawnerR.spriteIndex = 1;
@@ -55,16 +62,22 @@ public class Environment : MonoBehaviour {
 		if (i == 2) {
 			GetComponent<SpriteRenderer> ().sprite = room2;
 			foreach (Enemy x in Enemy.enemies) {
-				x.GetComponent<SpriteRenderer> ().sprite = enemy1;
+				if (x.name == "j")
+					x.GetComponent<SpriteRenderer> ().sprite = enemy2j;
+				else
+					x.GetComponent<SpriteRenderer> ().sprite = enemy2g;
 			}
-			spawnerL.spriteIndex = 1;
-			spawnerR.spriteIndex = 1;
+			spawnerL.spriteIndex = 2;
+			spawnerR.spriteIndex = 2;
 		}
 
 		if (i == 3) {
 			GetComponent<SpriteRenderer> ().sprite = room3;
 			foreach (Enemy x in Enemy.enemies) {
-				x.GetComponent<SpriteRenderer> ().sprite = enemy3;
+				if (x.name == "j")
+					x.GetComponent<SpriteRenderer> ().sprite = enemy3j;
+				else
+					x.GetComponent<SpriteRenderer> ().sprite = enemy3g;
 			}
 			spawnerL.spriteIndex = 3;
 			spawnerR.spriteIndex = 3;
@@ -73,7 +86,11 @@ public class Environment : MonoBehaviour {
 		if (i == 4) {
 			GetComponent<SpriteRenderer> ().sprite = room4;
 			foreach (Enemy x in Enemy.enemies) {
-				x.GetComponent<SpriteRenderer> ().sprite = enemy4;
+
+				if (x.name == "j")
+					x.GetComponent<SpriteRenderer> ().sprite = enemy4j;
+				else
+					x.GetComponent<SpriteRenderer> ().sprite = enemy4g;
 			}
 			spawnerL.spriteIndex = 4;
 			spawnerR.spriteIndex = 4;

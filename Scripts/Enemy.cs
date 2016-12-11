@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour {
 	public Sprite dead2;
 	public Sprite kicked2;
 	public int env;
+	public string demon;
 
 	private Rigidbody2D rigidBody;
 	private SpriteRenderer spriteRenderer;
@@ -95,6 +96,8 @@ public class Enemy : MonoBehaviour {
 			spriteRenderer.sprite = dead1;
 		else if (env == 3)
 			spriteRenderer.sprite = dead2;
+		else if (env == 4)
+			spriteRenderer.sprite = dead2;
 		transform.position = new Vector3 (transform.position.x, transform.position.y - 1.8f, transform.position.z);
 		blinkFrameDelta = 3;
 		// animation goes here
@@ -109,6 +112,8 @@ public class Enemy : MonoBehaviour {
 		else if (env == 2)
 			spriteRenderer.sprite = kicked1;
 		else if (env == 3)
+			spriteRenderer.sprite = kicked2;
+		else if (env == 4)
 			spriteRenderer.sprite = kicked2;
 		float x = direction == Direction.left ? 1 : -1;
 		Vector3 impulse = new Vector3(x * hitXImpulse, hitYImpulse, 0);
