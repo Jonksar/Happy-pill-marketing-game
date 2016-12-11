@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour {
 	private Vector3 startPos;
 	private Vector3 desiredPos;
 	private float timeRemaining = 0.0f;
+	private float totalTime;
 
 	private System.Random rnd = new System.Random();
 	private List<Enemy> leftSide = new List<Enemy>();
@@ -59,7 +60,7 @@ public class PlayerController : MonoBehaviour {
 				state = State.Attack;
 				desiredPos = new Vector3(enemy.transform.position.x, pos.y, pos.z);
 				startPos = pos;
-				timeRemaining = 0.2f;
+				totalTime = timeRemaining = 0.2f;
 
 				spriteRenderer.flipX = left;
 				enemy.Hit(10);
@@ -68,14 +69,14 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		if (state == State.Attack) {
-			transform.position = Vector3.Lerp(desiredPos, startPos, timeRemaining);
+			transform.position = Vector3.Lerp(desiredPos, startPos, timeRemaining / totalTime);
 
 			if (timeRemaining == 0.0f) {
 				if (Math.Abs(transform.position.x) > maxDistanceFromCentre) {
 					state = State.WallJump;
 					desiredPos = new Vector3(0, -0.6f, 0);
 					startPos = pos;
-					timeRemaining = 0.4f;
+					totalTime = timeRemaining = 0.4f;
 					spriteRenderer.flipX = !spriteRenderer.flipX;
 				} else {
 					OnAttackEnd();
@@ -83,7 +84,7 @@ public class PlayerController : MonoBehaviour {
 				}
 			}
 		} else if (state == State.WallJump) {
-			transform.position = Vector3.Lerp(desiredPos, startPos, timeRemaining);
+			transform.position = Vector3.Lerp(desiredPos, startPos, timeRemaining / totalTime);
 
 			if (timeRemaining == 0.0f) {
 				OnAttackEnd();
@@ -93,7 +94,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void AttackOn() {
-		Invoke("OnAttackEnd", 0.1f);
+		//Invoke("OnAttackEnd", 0.1f);
 		spriteRenderer.sprite = attackSprites[rnd.Next(0,3)];
 		Destroy(GetComponent<BoxCollider2D>());  
 		gameObject.AddComponent<BoxCollider2D>();
