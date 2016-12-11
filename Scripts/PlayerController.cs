@@ -34,6 +34,8 @@ public class PlayerController : MonoBehaviour {
 	private List<Enemy> leftSide = new List<Enemy>();
 	private List<Enemy> rightSide = new List<Enemy>();
 
+	private SoundManager soundManager;
+
 	void Start() {
 		spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -41,6 +43,8 @@ public class PlayerController : MonoBehaviour {
 		attackSprites[1] = attack2;
 		attackSprites[2] = attack3;
 		attackSprites [3] = attack4;
+
+		this.soundManager = GameObject.Find ("SoundManager").GetComponent<SoundManager>();
 	}
 
 	void Update () {
@@ -102,6 +106,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void AttackOn() {
+		soundManager.PlayPunchSFX ();
 		spriteRenderer.sprite = attackSprites[rnd.Next(0,3)];
 		Destroy(GetComponent<BoxCollider2D>());  
 		gameObject.AddComponent<BoxCollider2D>();
