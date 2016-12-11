@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
+
 	public Sprite idle;
 	public Sprite attack1;
 	public Sprite attack2;
 	public Sprite attack3;
 	public Sprite attack4;
+	public int health = 10;
 
 	private enum State {
 		Idle,
@@ -47,9 +49,8 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		Vector3 pos = transform.position;
-		float xAxis = Input.GetAxis("Horizontal");
-		bool left = xAxis < 0;
-		bool right = xAxis > 0;
+		bool left = Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A);
+		bool right = (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) && !left;
 
 		UpdateLists();
 
@@ -57,17 +58,19 @@ public class PlayerController : MonoBehaviour {
 			List<Enemy> list = left ? leftSide : rightSide;
 
 			if (list.Count > 0) {
-				Enemy enemy = list[0];
-				list.RemoveAt(0);
+				Enemy enemy = list [0];
+				list.RemoveAt (0);
 
 				state = State.Attack;
-				desiredPos = new Vector3(enemy.transform.position.x, pos.y, pos.z);
+				desiredPos = new Vector3 (enemy.transform.position.x, pos.y, pos.z);
 				startPos = pos;
-				setAnimLength(0.2f);
+				setAnimLength (0.2f);
 
 				spriteRenderer.flipX = left;
-				AttackOn();
-				enemy.Hit(10);
+				AttackOn ();
+				enemy.Hit (10);
+			} else {
+				this.health -= 1; 
 			}
 		}
 
@@ -92,6 +95,10 @@ public class PlayerController : MonoBehaviour {
 				OnAttackEnd();
 			}
 		}
+
+		if (health < 0) {
+			Die ();
+		}
 	}
 
 	void AttackOn() {
@@ -115,7 +122,8 @@ public class PlayerController : MonoBehaviour {
 			if (state == State.WallJump) {
 				enemy.Hit(1000);
 			} else {
-				Die();
+				enemy.Hit (1000);
+				health -= 1;
 			}
 		}
 	}
