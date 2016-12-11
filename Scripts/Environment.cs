@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Environment : MonoBehaviour {
-
+	
 	public Sprite room1;
 	public Sprite room2;
+	public Sprite room3;
+
 	public Sprite enemy1;
 	public Sprite enemy2;
+
 	public Spawner spawnerL;
 	public Spawner spawnerR;
 
-	public bool pushThisButton = false;
-	private bool previous = false;
+	public int pushThisButton = 1;
+	private int previous = 0;
 	// Use this for initialization
 	void Start () {
 		
@@ -22,10 +25,12 @@ public class Environment : MonoBehaviour {
 	void Update () {
 		
 		if (pushThisButton != previous) {
-			if (pushThisButton) {
+			if (pushThisButton == 2) {
 				ChangeEnvironment (2);
-			} else {
+			} else if (pushThisButton == 1) {
 				ChangeEnvironment (1);
+			} else if (pushThisButton == 3) {
+				ChangeEnvironment (3);
 			}
 		}
 		previous = pushThisButton;
@@ -35,6 +40,7 @@ public class Environment : MonoBehaviour {
 		if (i == 1) {
 			GetComponent<SpriteRenderer> ().sprite = room1;
 			foreach (Enemy x in Enemy.enemies) {
+				//bug: changing everything to demontan now but should check if gamithra or joonatan
 				x.GetComponent<SpriteRenderer> ().sprite = enemy1;
 			}
 			spawnerL.spriteIndex = 1;
@@ -48,9 +54,16 @@ public class Environment : MonoBehaviour {
 			}
 			spawnerL.spriteIndex = 2;
 			spawnerR.spriteIndex = 2;
-
-
 		}
 
-	}	
+		if (i == 3) {
+			GetComponent<SpriteRenderer> ().sprite = room3;
+			foreach (Enemy x in Enemy.enemies) {
+				x.GetComponent<SpriteRenderer> ().sprite = enemy2;
+			}
+			spawnerL.spriteIndex = 2;
+			spawnerR.spriteIndex = 2;
+		}
+	}
+		
 }
