@@ -7,19 +7,17 @@ public class Environment : MonoBehaviour {
 	public Sprite room1;
 	public Sprite floor2;
 	public Sprite room2;
+
+	public bool pushThisButton;
 	// Use this for initialization
-	private int i = 3;
 	void Start () {
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (i % 100 == 0) {
+		if (pushThisButton)
 			ChangeEnvironment (2);
-			Debug.Log ("jv");
-		}
-		++i;	
 	}
 
 	public void ChangeEnvironment(int i) {
