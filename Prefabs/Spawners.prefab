@@ -65,7 +65,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1826747578218182}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10, y: 0, z: 0}
+  m_LocalPosition: {x: -10, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4669911210073704}
@@ -78,7 +78,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1671321386690522}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10, y: 0, z: 0}
+  m_LocalPosition: {x: 10, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4669911210073704}
@@ -112,7 +112,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj: {fileID: 1647640400936666, guid: bdfa8174ab16e4148aa3ab756fed7ab9, type: 2}
   direction: 0
-  spawnRateSeconds: 4
+  spawnMinRateSeconds: 0.6
+  spawnMaxRateSeconds: 2
 --- !u!114 &114916101468954022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -126,4 +127,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj: {fileID: 1647640400936666, guid: bdfa8174ab16e4148aa3ab756fed7ab9, type: 2}
   direction: 1
-  spawnRateSeconds: 4
+  spawnMinRateSeconds: 0.6
+  spawnMaxRateSeconds: 2

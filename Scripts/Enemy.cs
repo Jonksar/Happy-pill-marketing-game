@@ -11,6 +11,7 @@ public enum Direction {
 public class Enemy : MonoBehaviour {
 	public float speed;
 	public int health;
+	public int damage;
 	public Direction direction;
 
 	private Rigidbody2D rigidBody;
@@ -18,7 +19,8 @@ public class Enemy : MonoBehaviour {
 	private SoundManager sounds;
 	private int blinking = 0;
 	private int blinkFrameDelta = 4;
-	private float hitImpulseCoefficient = 3;
+	private const float hitXImpulse = 5;
+	private const float hitYImpulse = 6;
 
 	public static List<Enemy> enemies = new List<Enemy>();
 
@@ -27,14 +29,8 @@ public class Enemy : MonoBehaviour {
 
 		if (IsDead()) {
 			GetComponent<BoxCollider2D>().enabled = false;
-			blinking = 1;
 			sounds.PlayMonsterHitSFX();
-
-			if (Random.value > 0.5f) {
-				Die();
-			} else {
-				DieSlide();
-			}
+			DieImpulse();
 		} else {
 			sounds.PlayPunchSFX();
 		}
@@ -55,7 +51,7 @@ public class Enemy : MonoBehaviour {
 	}
 
 	void Update () {
-		if (blinking > 0) {
+		if (IsDead()) {
 			spriteRenderer.enabled = (blinking / blinkFrameDelta) % 2 == 0;
 			++blinking;
 		}
@@ -78,18 +74,16 @@ public class Enemy : MonoBehaviour {
 	}
 
 	private void Die() {
-		rigidBody.simulated = false;
 		blinkFrameDelta = 3;
 		// animation goes here
 		Invoke("DeathBlink", 0.5f);
 	}
 
-	private void DieSlide() {
-		Vector3 impulse = direction == Direction.left ? Vector3.right : Vector3.left;
-
-		rigidBody.AddForce(impulse * hitImpulseCoefficient, ForceMode2D.Impulse);
-		// animation goes here
-		Invoke ("Die", 0.9f);
+	private void DieImpulse() {
+		float x = direction == Direction.left ? 1 : -1;
+		Vector3 impulse = new Vector3(x * hitXImpulse, hitYImpulse, 0);
+		rigidBody.AddForce(impulse, ForceMode2D.Impulse);
+		Invoke("Die", 0.9f);
 	}
 
 	private void Remove() {

@@ -4,30 +4,36 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-	public float speed = 1.0f;
-	public bool attackingLeft = false;
-	public bool attackingRight = false;
 	public Sprite idle;
 	public Sprite attack1;
 	public Sprite attack2;
 	public Sprite attack3;
 	public Sprite attack4;
 
+	private enum State {
+		Idle,
+		Attack,
+		WallJump
+	};
+
 	private SpriteRenderer spriteRenderer;
-	private Rigidbody2D rigidBody;
-	private Sprite[] attackSprites = new Sprite[3];
-	private float hitAreaWidth = 3;
-	private float direction;
-	private const float minX = -5;
-	private const float maxX = -minX;
-	private float xVel = 0;
+	private Sprite[] attackSprites = new Sprite[4];
+
+	private const float hitAreaWidth = 4;
+	private const float maxDistanceFromCentre = 7;
+
+	private State state = State.Idle;
+	private Vector3 startPos;
+	private Vector3 desiredPos;
+	private float percentElapsed = 0.0f;
+	private float totalTime;
+
 	private System.Random rnd = new System.Random();
 	private List<Enemy> leftSide = new List<Enemy>();
 	private List<Enemy> rightSide = new List<Enemy>();
 
 	void Start() {
 		spriteRenderer = GetComponent<SpriteRenderer>();
-		rigidBody = GetComponent<Rigidbody2D>();
 
 		attackSprites[0] = attack1;
 		attackSprites[1] = attack2;
@@ -36,44 +42,59 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Update () {
-		direction = Input.GetAxis("Horizontal");
-
-		if (direction == 0 || attackingLeft || attackingRight) {
-			return;
+		if (totalTime >= 0.0f) {
+			percentElapsed = Math.Min(1.0f, percentElapsed + Time.deltaTime / totalTime);
 		}
+
+		Vector3 pos = transform.position;
+		float xAxis = Input.GetAxis("Horizontal");
+		bool left = xAxis < 0;
+		bool right = xAxis > 0;
 
 		UpdateLists();
 
-		attackingLeft = direction < 0;
-		attackingRight = direction > 0;
-		bool attack = attackingLeft || attackingRight;
-		float delta = attackingLeft ? -1 : 1;
-
-		if (attack) {
-			List<Enemy> list = attackingLeft ? leftSide : rightSide;
+		if (state == State.Idle && (left || right)) {
+			List<Enemy> list = left ? leftSide : rightSide;
 
 			if (list.Count > 0) {
 				Enemy enemy = list[0];
 				list.RemoveAt(0);
-				setX(enemy.transform.position.x + delta);
-				enemy.Hit(4);
-			} else {
-				attack = false;
-				setX(transform.position.x + delta);
-				Invoke("OnAttackEnd", 0.05f);
+
+				state = State.Attack;
+				desiredPos = new Vector3(enemy.transform.position.x, pos.y, pos.z);
+				startPos = pos;
+				setAnimLength(0.2f);
+
+				spriteRenderer.flipX = left;
+				AttackOn();
+				enemy.Hit(10);
 			}
 		}
 
-		if (attack) {
-			Invoke("AttackOn", 0.05f);
-			spriteRenderer.sprite = attack4;
-		}
+		if (state == State.Attack) {
+			transform.position = EaseIn(startPos, desiredPos, percentElapsed);
 
-		spriteRenderer.flipX = attackingLeft;
+			if (percentElapsed == 1.0f) {
+				if (Math.Abs(transform.position.x) > maxDistanceFromCentre) {
+					state = State.WallJump;
+					desiredPos = new Vector3(0, -0.6f, 0);
+					startPos = pos;
+					setAnimLength(0.4f);
+					spriteRenderer.flipX = !spriteRenderer.flipX;
+				} else {
+					OnAttackEnd();
+				}
+			}
+		} else if (state == State.WallJump) {
+			transform.position = EaseIn(startPos, desiredPos, percentElapsed);
+
+			if (percentElapsed == 1.0f) {
+				OnAttackEnd();
+			}
+		}
 	}
 
 	void AttackOn() {
-		Invoke("OnAttackEnd", 0.35f);
 		spriteRenderer.sprite = attackSprites[rnd.Next(0,3)];
 		Destroy(GetComponent<BoxCollider2D>());  
 		gameObject.AddComponent<BoxCollider2D>();
@@ -81,9 +102,26 @@ public class PlayerController : MonoBehaviour {
 
 	void OnAttackEnd() {
 		spriteRenderer.sprite = idle;
-		attackingLeft = attackingRight = false;
 		Destroy(GetComponent<BoxCollider2D>());
 		gameObject.AddComponent<BoxCollider2D>();
+		state = State.Idle;
+		setAnimLength(0);
+	}
+
+	void OnTriggerEnter2D(Collider2D collider) {
+		Enemy enemy = collider.gameObject.GetComponent<Enemy>();
+
+		if (!enemy.IsDead()) {
+			if (state == State.WallJump) {
+				enemy.Hit(1000);
+			} else {
+				Die();
+			}
+		}
+	}
+
+	private void Die() {
+		Debug.Log("Die");
 	}
 
 	private void UpdateLists() {
@@ -114,8 +152,13 @@ public class PlayerController : MonoBehaviour {
 		return Mathf.Abs(transform.position.x - pos.x) < hitAreaWidth;
 	}
 
-	private void setX(float x) {
-		Vector3 pos = transform.position;
-		transform.position = new Vector3(Math.Min(maxX, Math.Max(minX, x)), pos.y, pos.z);
+	private void setAnimLength(float time) {
+		totalTime = time;
+		percentElapsed = 0;
+	}
+
+	private Vector3 EaseIn(Vector3 start, Vector3 end, float amount) {
+		Vector3 delta = end - start;
+		return start + delta * amount * amount;
 	}
 }
