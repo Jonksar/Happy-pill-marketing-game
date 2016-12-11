@@ -11,6 +11,8 @@ public class Environment : MonoBehaviour {
 
 	public Sprite enemy1;
 	public Sprite enemy2;
+	public Sprite enemy3;
+	public Sprite enemy4;
 
 	public Spawner spawnerL;
 	public Spawner spawnerR;
@@ -53,28 +55,28 @@ public class Environment : MonoBehaviour {
 		if (i == 2) {
 			GetComponent<SpriteRenderer> ().sprite = room2;
 			foreach (Enemy x in Enemy.enemies) {
-				x.GetComponent<SpriteRenderer> ().sprite = enemy2;
+				x.GetComponent<SpriteRenderer> ().sprite = enemy1;
 			}
-			spawnerL.spriteIndex = 2;
-			spawnerR.spriteIndex = 2;
+			spawnerL.spriteIndex = 1;
+			spawnerR.spriteIndex = 1;
 		}
 
 		if (i == 3) {
 			GetComponent<SpriteRenderer> ().sprite = room3;
 			foreach (Enemy x in Enemy.enemies) {
-				x.GetComponent<SpriteRenderer> ().sprite = enemy2;
+				x.GetComponent<SpriteRenderer> ().sprite = enemy3;
 			}
-			spawnerL.spriteIndex = 2;
-			spawnerR.spriteIndex = 2;
+			spawnerL.spriteIndex = 3;
+			spawnerR.spriteIndex = 3;
 		}
 
 		if (i == 4) {
 			GetComponent<SpriteRenderer> ().sprite = room4;
 			foreach (Enemy x in Enemy.enemies) {
-				x.GetComponent<SpriteRenderer> ().sprite = enemy2;
+				x.GetComponent<SpriteRenderer> ().sprite = enemy4;
 			}
-			spawnerL.spriteIndex = 2;
-			spawnerR.spriteIndex = 2;
+			spawnerL.spriteIndex = 4;
+			spawnerR.spriteIndex = 4;
 		}
 	}
 		

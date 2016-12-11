@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4279109368545774}
   - component: {fileID: 114034097946109872}
   - component: {fileID: 212272579866294174}
+  - component: {fileID: 114485489332857264}
   m_Layer: 0
   m_Name: Environment
   m_TagString: Untagged
@@ -54,11 +55,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   room1: {fileID: 21300000, guid: cdfa985bd0b0f4b46be049551e5df0a0, type: 3}
   room2: {fileID: 21300000, guid: 44e53599e328148478e343332d99cc22, type: 3}
+  room3: {fileID: 21300000, guid: 92102142143b81a40ba8871b0448dbff, type: 3}
+  room4: {fileID: 21300000, guid: 66d17f1eac94b2244870e9db43fa8887, type: 3}
   enemy1: {fileID: 21300000, guid: 029116a71e466d547a7592e341a631fd, type: 3}
-  enemy2: {fileID: 21300000, guid: 9924ee4f015d3d54fa48d0b6021ee4ed, type: 3}
+  enemy2: {fileID: 21300000, guid: 029116a71e466d547a7592e341a631fd, type: 3}
+  enemy3: {fileID: 21300000, guid: 9924ee4f015d3d54fa48d0b6021ee4ed, type: 3}
+  enemy4: {fileID: 21300000, guid: 9924ee4f015d3d54fa48d0b6021ee4ed, type: 3}
   spawnerL: {fileID: 0}
   spawnerR: {fileID: 0}
   pushThisButton: 0
+--- !u!114 &114485489332857264
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1450434294448214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e68d7c7d0d8482743a4a66053cdc71dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212272579866294174
 SpriteRenderer:
   m_ObjectHideFlags: 1
