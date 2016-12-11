@@ -19,6 +19,8 @@ public class SoundManager : MonoBehaviour {
 	public AudioClip[] punchSFXs;
 	public AudioClip[] monsterHitSFXs;
 	public AudioClip[] playerHitSFXs;
+	public AudioClip[] glitchSFXs;
+	public AudioClip[] mentalitySFXs;
 
 	[Header("Music (sorted by speed)")]
 	public AudioClip[] happyThemes;
@@ -34,9 +36,7 @@ public class SoundManager : MonoBehaviour {
 
 	public int musicIndexCounter = 0;
 
-	// Use this for initialization
-	void Start () {
-
+	void Start() {
 		GameObject m_obj = GameObject.Instantiate (fader);
 		GameObject sfx_obj = GameObject.Instantiate (serialPlayer);
 			
@@ -46,44 +46,45 @@ public class SoundManager : MonoBehaviour {
 		m_obj.transform.SetParent (this.transform);
 		sfx_obj.transform.SetParent (this.transform);
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+	public void ChangeTo(AudioClip audio) {
+		music_player.MakeFade(audio);
 	}
 
 	public void ChangeMusic(int speed, musicType type){
-		switch (type) {
-		
-		case musicType.Happy:
-			music_player.MakeFade (this.happyThemes [speed]);
-			break;
-		
-		case musicType.Sad:
-			music_player.MakeFade (this.sadThemes [speed]);
-			break;
+		AudioClip[] clips =
+			type == musicType.Happy ? this.happyThemes :
+			type == musicType.Sad ? this.sadThemes : this.menuThemes;
 
-		case musicType.MenuMusic:
-			music_player.MakeFade (this.menuThemes [speed]);
-			break;
-		}
+		ChangeTo(clips[speed]);
 	}
-	
+
 	public void smth() {
 		this.ChangeMusic (this.musicIndexCounter % this.menuThemes.Length, musicType.MenuMusic);
 		this.musicIndexCounter++;
 	}
 
+	public void PlaySFX(AudioClip audio) {
+		this.sfx_player.PlaySFX(audio);
+	}
+
 	public void PlayPunchSFX() {
-		this.sfx_player.PlaySFX(monsterHitSFXs[Random.Range(0, punchSFXs.Length - 1)]);
+		PlaySFX(monsterHitSFXs[Random.Range(0, punchSFXs.Length - 1)]);
 	}
 
 	public void PlayMonsterHitSFX() {
-		this.sfx_player.PlaySFX (monsterHitSFXs [Random.Range (0, monsterHitSFXs.Length - 1)]);
+		PlaySFX(monsterHitSFXs [Random.Range (0, monsterHitSFXs.Length - 1)]);
 	}
 
 	public void PlayPlayerHitSFX() {
-		this.sfx_player.PlaySFX (playerHitSFXs [Random.Range (0, playerHitSFXs.Length - 1)]);
-		
+		PlaySFX(playerHitSFXs [Random.Range (0, playerHitSFXs.Length - 1)]);
 	}
 
+	public void PlayGlitchSFX() {
+		PlaySFX(glitchSFXs[Random.Range(0, glitchSFXs.Length - 1)]);
+	}
+
+	public void PlayMentalitySFX() {
+		PlaySFX(mentalitySFXs[Random.Range(0, mentalitySFXs.Length - 1)]);
+	}
 }
