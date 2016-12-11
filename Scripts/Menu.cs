@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour {
 	private enum State {
@@ -14,27 +15,45 @@ public class Menu : MonoBehaviour {
 
 	private State state = State.Start;
 	private Image fader;
-	private Image mainImage;
+	private Image background;
+	private Text text;
 	private float elapsed = 0;
 	private float startDuration = 2;
 	private float titleDuration = 9;
 	private float blankDuration = 2;
 	private float fadeDuration = 2;
-	private float mainSoundInterval = 7;
+	private float mainSoundInterval = 5.5f;
 	private SoundManager sounds;
+
+	private bool pressedLeft = false;
+	private bool pressedRight = false;
 
 	void Start() {
 		fader = GameObject.Find("Fader").GetComponent<Image>();
-		mainImage = GameObject.Find("MainImage").GetComponent<Image>();
+		background = GameObject.Find("Background").GetComponent<Image>();
+		text = GameObject.Find("TitleText").GetComponent<Text>();
 		sounds = GameObject.Find("SoundManager").GetComponent<SoundManager>();
 	}
 
 	void Update() {
 		if (state == State.Start && elapsed == 0.0f) {
-			sounds.PlaySFX(sounds.glitchSFXs[1]);
+			sounds.PlaySFX(sounds.glitchSFXs[1], sounds.glitchSFXvolume);
 		}
 
 		elapsed += Time.deltaTime;
+
+		if (Input.GetKeyDown (KeyCode.RightArrow) || Input.GetKeyDown (KeyCode.LeftArrow) || Input.GetKeyDown (KeyCode.A) || Input.GetKeyDown (KeyCode.D)) {
+			sounds.PlayPianoSFX ();
+			if (Input.GetKeyDown (KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) {
+				this.pressedLeft = true;
+			} else {
+				this.pressedRight = true;
+			}
+
+			if (this.pressedLeft && this.pressedRight) {
+				Debug.Log ("Here");
+			}
+		} 
 
 		switch (state) {
 			case State.Start:
@@ -50,7 +69,7 @@ public class Menu : MonoBehaviour {
 				if (elapsed > titleDuration) {
 					state = State.Blank;
 					elapsed = 0;
-					sounds.PlaySFX(sounds.glitchSFXs[3]);
+				sounds.PlaySFX(sounds.glitchSFXs[3], sounds.glitchSFXvolume);
 				}
 				break;
 
@@ -65,7 +84,9 @@ public class Menu : MonoBehaviour {
 				break;
 
 			case State.CrossFade:
-				mainImage.color = Color.Lerp(Color.clear, Color.white, Mathf.Clamp01(elapsed / fadeDuration));
+				text.color = Color.clear;
+				background.color = Color.clear;
+  			    fader.color = Color.Lerp(Color.black, Color.clear, Mathf.Clamp01(elapsed / fadeDuration));
 
 				if (elapsed > fadeDuration) {
 					state = State.MainMenu;
@@ -74,12 +95,17 @@ public class Menu : MonoBehaviour {
 				}
 				break;
 
-		case State.MainMenu:
-			if (elapsed > mainSoundInterval) {
-				elapsed = 0;
-				sounds.PlayMentalitySFX();
-			}
-			break;
+			case State.MainMenu:
+				if (elapsed > mainSoundInterval) {
+					elapsed = 0;
+					sounds.PlayMentalitySFX();
+				}
+
+				break;
 		}
+	}
+
+	void ChangeSceneToGame() {
+		SceneManager.LoadScene ("GameScene");
 	}
 }
