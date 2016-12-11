@@ -21,6 +21,14 @@ public class SoundManager : MonoBehaviour {
 	public AudioClip[] playerHitSFXs;
 	public AudioClip[] glitchSFXs;
 	public AudioClip[] mentalitySFXs;
+	public AudioClip pianoSFX;
+
+	[Range(0f, 1f)] public float punchSFXvolume = 1f;
+	[Range(0f, 1f)] public float monsterHitSFXvolume = 1f;
+	[Range(0f, 1f)] public float playerHitSFXvolume = 1f;
+	[Range(0f, 1f)] public float glitchSFXvolume = 1f;
+	[Range(0f, 1f)] public float mentalitySFXvolume = 1f;
+	[Range(0f, 1f)] public float musicSFXvolume = 1f;
 
 	[Header("Music (sorted by speed)")]
 	public AudioClip[] happyThemes;
@@ -64,27 +72,32 @@ public class SoundManager : MonoBehaviour {
 		this.musicIndexCounter++;
 	}
 
-	public void PlaySFX(AudioClip audio) {
-		this.sfx_player.PlaySFX(audio);
+	public void PlaySFX(AudioClip audio, float volume) {
+		this.sfx_player.PlaySFX(audio, volume);
 	}
 
 	public void PlayPunchSFX() {
-		PlaySFX(monsterHitSFXs[Random.Range(0, punchSFXs.Length - 1)]);
+		PlaySFX(monsterHitSFXs[Random.Range(0, punchSFXs.Length - 1)], punchSFXvolume);
+
 	}
 
 	public void PlayMonsterHitSFX() {
-		PlaySFX(monsterHitSFXs [Random.Range (0, monsterHitSFXs.Length - 1)]);
+		PlaySFX(monsterHitSFXs [Random.Range (0, monsterHitSFXs.Length - 1)], monsterHitSFXvolume);
 	}
 
 	public void PlayPlayerHitSFX() {
-		PlaySFX(playerHitSFXs [Random.Range (0, playerHitSFXs.Length - 1)]);
+		PlaySFX(playerHitSFXs [Random.Range (0, playerHitSFXs.Length - 1)], playerHitSFXvolume);
 	}
 
 	public void PlayGlitchSFX() {
-		PlaySFX(glitchSFXs[Random.Range(0, glitchSFXs.Length - 1)]);
+		PlaySFX(glitchSFXs[Random.Range(0, glitchSFXs.Length - 1)], glitchSFXvolume);
 	}
 
 	public void PlayMentalitySFX() {
-		PlaySFX(mentalitySFXs[Random.Range(0, mentalitySFXs.Length - 1)]);
+		PlaySFX(mentalitySFXs[Random.Range(0, mentalitySFXs.Length - 1)], mentalitySFXvolume);
+	}
+
+	public void PlayPianoSFX() {
+		PlaySFX (pianoSFX, 1f);
 	}
 }
