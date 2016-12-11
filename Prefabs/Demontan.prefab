@@ -65,7 +65,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 6
 --- !u!61 &61504900616814330
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -121,6 +121,8 @@ MonoBehaviour:
   health: 10
   damage: 0
   direction: 1
+  dead: {fileID: 21300000, guid: 1550a6c3d4bb04e41b0f4cb5b44c16b4, type: 3}
+  kicked: {fileID: 21300000, guid: 1210c10c56f697a499227af7814ef121, type: 3}
 --- !u!114 &114839381141205574
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -133,7 +135,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   room1Sprite: {fileID: 21300000, guid: 029116a71e466d547a7592e341a631fd, type: 3}
-  room2Sprite: {fileID: 21300000, guid: 9924ee4f015d3d54fa48d0b6021ee4ed, type: 3}
+  room2Sprite: {fileID: 21300000, guid: 029116a71e466d547a7592e341a631fd, type: 3}
+  room3Sprite: {fileID: 21300000, guid: 9924ee4f015d3d54fa48d0b6021ee4ed, type: 3}
+  room4Sprite: {fileID: 21300000, guid: 9924ee4f015d3d54fa48d0b6021ee4ed, type: 3}
 --- !u!212 &212283090342979570
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -92,7 +92,10 @@ MonoBehaviour:
   attack1: {fileID: 21300000, guid: b631634f0d84c2b4795936aff069f6af, type: 3}
   attack2: {fileID: 21300000, guid: 073def323b5b74d449d0fc2a599723f8, type: 3}
   attack3: {fileID: 21300000, guid: 62dc2488945a3db4f972c63811e634bb, type: 3}
-  attack4: {fileID: 0}
+  attack4: {fileID: 21300000, guid: db2104ec74187b54fa6d6c79e2dcfe7f, type: 3}
+  wallslide: {fileID: 21300000, guid: 8f79bc9eb5c8c8d44b088de54a0ca01a, type: 3}
+  dead: {fileID: 21300000, guid: f30255d36ca071844a89e07432cb2760, type: 3}
+  health: 10
 --- !u!212 &212791287482794174
 SpriteRenderer:
   m_ObjectHideFlags: 1
