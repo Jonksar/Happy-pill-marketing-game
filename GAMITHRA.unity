@@ -134,13 +134,13 @@ Prefab:
         type: 2}
       propertyPath: obj
       value: 
-      objectReference: {fileID: 1647640400936666, guid: bdfa8174ab16e4148aa3ab756fed7ab9,
+      objectReference: {fileID: 1915259649658838, guid: 98ddfe4fcdc73c7448bd456698fa491c,
         type: 2}
     - target: {fileID: 114313409004079510, guid: 5adc56edd51d8e54ab2d8c43e32a8b0a,
         type: 2}
       propertyPath: obj
       value: 
-      objectReference: {fileID: 1647640400936666, guid: bdfa8174ab16e4148aa3ab756fed7ab9,
+      objectReference: {fileID: 1915259649658838, guid: 98ddfe4fcdc73c7448bd456698fa491c,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5adc56edd51d8e54ab2d8c43e32a8b0a, type: 2}
