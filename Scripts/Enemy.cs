@@ -29,7 +29,11 @@ public class Enemy : MonoBehaviour {
 
 		if (IsDead()) {
 			GetComponent<BoxCollider2D>().enabled = false;
-			sounds.PlayMonsterHitSFX();
+
+			if (sounds != null) {
+				sounds.PlayMonsterHitSFX();
+			}
+
 			DieImpulse();
 		} else {
 			sounds.PlayPunchSFX();
@@ -43,7 +47,10 @@ public class Enemy : MonoBehaviour {
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		spriteRenderer.flipX = direction == Direction.left;
 
-		sounds = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+		GameObject manager = GameObject.Find("SoundManager");
+		if (manager != null) {
+			sounds = manager.GetComponent<SoundManager>();
+		}
 	}
 
 	void OnDestroy() {
