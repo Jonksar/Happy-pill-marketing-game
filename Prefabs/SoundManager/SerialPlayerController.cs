@@ -23,10 +23,11 @@ public class SerialPlayerController : MonoBehaviour {
 		
 	}
 
-	public void PlaySFX(AudioClip sfx_clip) {
+	public void PlaySFX(AudioClip sfx_clip, float volume) {
 		AudioSource audioPlayer = this.audioSources [sfx_source_index++ % n_audioSources];
-		audioPlayer.pitch = Random.value * 0.1f + 1f;
-		audioPlayer.volume = 0.5f - Random.value * 0.1f;
+		audioPlayer.pitch = Random.value * 0.2f + 0.9f;
+
+		audioPlayer.volume = volume;
 		audioPlayer.clip = sfx_clip;
 		audioPlayer.time = 0f;
 		audioPlayer.Play ();
