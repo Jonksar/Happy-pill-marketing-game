@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour {
 	public Sprite attack2;
 	public Sprite attack3;
 	public Sprite attack4;
+	public Sprite wallslide;
+	public Sprite dead;
 	public int health = 10;
 
 	private enum State {
@@ -84,6 +86,7 @@ public class PlayerController : MonoBehaviour {
 			if (percentElapsed == 1.0f) {
 				if (Math.Abs(transform.position.x) > maxDistanceFromCentre) {
 					state = State.WallJump;
+					spriteRenderer.sprite = wallslide;
 					desiredPos = new Vector3(0, -0.6f, 0);
 					startPos = pos;
 					setAnimLength(0.4f);
@@ -102,6 +105,7 @@ public class PlayerController : MonoBehaviour {
 
 		if (health < 0) {
 			Die ();
+
 		}
 	}
 
@@ -135,6 +139,7 @@ public class PlayerController : MonoBehaviour {
 
 	private void Die() {
 		Debug.Log("Die");
+		spriteRenderer.sprite = dead;
 	}
 
 	private void UpdateLists() {
