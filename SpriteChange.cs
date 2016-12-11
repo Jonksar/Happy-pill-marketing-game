@@ -23,10 +23,10 @@ public class SpriteChange : MonoBehaviour {
 			GetComponent<SpriteRenderer> ().sprite = room2Sprite;
 		}
 		if (i == 3) {
-			GetComponent<SpriteRenderer> ().sprite = room2Sprite;
+			GetComponent<SpriteRenderer> ().sprite = room3Sprite;
 		}
 		if (i == 4) {
-			GetComponent<SpriteRenderer> ().sprite = room2Sprite;
+			GetComponent<SpriteRenderer> ().sprite = room4Sprite;
 		}
 	}
 }

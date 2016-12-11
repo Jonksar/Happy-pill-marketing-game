@@ -14,8 +14,11 @@ public class Enemy : MonoBehaviour {
 	public int damage;
 	public Direction direction;
 
-	public Sprite dead;
-	public Sprite kicked;
+	public Sprite dead1;
+	public Sprite kicked1;
+	public Sprite dead2;
+	public Sprite kicked2;
+	public int env;
 
 	private Rigidbody2D rigidBody;
 	private SpriteRenderer spriteRenderer;
@@ -84,7 +87,14 @@ public class Enemy : MonoBehaviour {
 	}
 
 	private void Die() {
-		spriteRenderer.sprite = dead;
+		env = GameObject.Find ("Environment").GetComponent<Environment> ().pushThisButton;
+
+		if (env == 1)
+			spriteRenderer.sprite = dead1;
+		else if (env == 2)
+			spriteRenderer.sprite = dead1;
+		else if (env == 3)
+			spriteRenderer.sprite = dead2;
 		transform.position = new Vector3 (transform.position.x, transform.position.y - 1.8f, transform.position.z);
 		blinkFrameDelta = 3;
 		// animation goes here
@@ -92,7 +102,14 @@ public class Enemy : MonoBehaviour {
 	}
 
 	private void DieImpulse() {
-		spriteRenderer.sprite = kicked;
+		env = GameObject.Find ("Environment").GetComponent<Environment> ().pushThisButton;
+
+		if (env == 1)
+			spriteRenderer.sprite = kicked1;
+		else if (env == 2)
+			spriteRenderer.sprite = kicked1;
+		else if (env == 3)
+			spriteRenderer.sprite = kicked2;
 		float x = direction == Direction.left ? 1 : -1;
 		Vector3 impulse = new Vector3(x * hitXImpulse, hitYImpulse, 0);
 		rigidBody.AddForce(impulse, ForceMode2D.Impulse);
