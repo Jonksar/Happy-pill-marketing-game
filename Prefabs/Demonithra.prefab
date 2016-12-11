@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114899577072135202}
   - component: {fileID: 114739353433805986}
   - component: {fileID: 114171985402245914}
+  - component: {fileID: 95158364066144994}
   m_Layer: 0
   m_Name: Demonithra
   m_TagString: Untagged
@@ -95,13 +96,30 @@ BoxCollider2D:
   m_Offset: {x: -0.18638134, y: 0}
   serializedVersion: 2
   m_Size: {x: 3.1970453, y: 8.93}
+--- !u!95 &95158364066144994
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1307048450390694}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c8bf2b30202125c46a03550805a68bfb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114171985402245914
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1307048450390694}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6fee820d3702d04d8c36eb2863ca1fc, type: 3}
   m_Name: 
@@ -149,6 +167,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   room1Sprite: {fileID: 21300000, guid: 9c8e4b52d811a274399987bb3e241d89, type: 3}
   room2Sprite: {fileID: 21300000, guid: 9c8e4b52d811a274399987bb3e241d89, type: 3}
+  room3Sprite: {fileID: 21300000, guid: 9c8e4b52d811a274399987bb3e241d89, type: 3}
+  room4Sprite: {fileID: 21300000, guid: 9c8e4b52d811a274399987bb3e241d89, type: 3}
 --- !u!212 &212364827854398706
 SpriteRenderer:
   m_ObjectHideFlags: 1
