@@ -7,6 +7,7 @@ public class Spawner : MonoBehaviour {
 	public Direction direction;
 	public float spawnMinRateSeconds;
 	public float spawnMaxRateSeconds;
+	public int spriteIndex = 1;
 
 	public void Start() {
 		Spawn();
@@ -15,7 +16,7 @@ public class Spawner : MonoBehaviour {
 	private void Spawn() {
 		GameObject o = Instantiate(obj, transform.position, transform.rotation);
 		Enemy enemy = o.GetComponent<Enemy>();
-
+		o.GetComponent<SpriteChange>().ChangeSprite (spriteIndex);
 		enemy.direction = direction;
 
 		Invoke("Spawn", Random.value * (spawnMaxRateSeconds - spawnMinRateSeconds) + spawnMinRateSeconds);
