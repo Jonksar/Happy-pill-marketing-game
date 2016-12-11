@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-	public bool attackingLeft = false;
-	public bool attackingRight = false;
 	public Sprite idle;
 	public Sprite attack1;
 	public Sprite attack2;
@@ -64,8 +62,8 @@ public class PlayerController : MonoBehaviour {
 				timeRemaining = 0.2f;
 
 				spriteRenderer.flipX = left;
-				AttackOn();
 				enemy.Hit(10);
+				AttackOn();
 			}
 		}
 
@@ -77,18 +75,18 @@ public class PlayerController : MonoBehaviour {
 					state = State.WallJump;
 					desiredPos = new Vector3(0, -0.6f, 0);
 					startPos = pos;
-					timeRemaining = 0.2f;
+					timeRemaining = 0.4f;
 					spriteRenderer.flipX = !spriteRenderer.flipX;
 				} else {
+					OnAttackEnd();
 					state = State.Idle;
 				}
 			}
-		}
-
-		if (state == State.WallJump) {
+		} else if (state == State.WallJump) {
 			transform.position = Vector3.Lerp(desiredPos, startPos, timeRemaining);
 
 			if (timeRemaining == 0.0f) {
+				OnAttackEnd();
 				state = State.Idle;
 			}
 		}
@@ -103,9 +101,24 @@ public class PlayerController : MonoBehaviour {
 
 	void OnAttackEnd() {
 		spriteRenderer.sprite = idle;
-		attackingLeft = attackingRight = false;
 		Destroy(GetComponent<BoxCollider2D>());
 		gameObject.AddComponent<BoxCollider2D>();
+	}
+
+	void OnTriggerEnter2D(Collider2D collider) {
+		Enemy enemy = collider.gameObject.GetComponent<Enemy>();
+
+		if (!enemy.IsDead()) {
+			if (state == State.WallJump) {
+				enemy.Hit(1000);
+			} else {
+				Die();
+			}
+		}
+	}
+
+	private void Die() {
+		Debug.Log("Die");
 	}
 
 	private void UpdateLists() {
