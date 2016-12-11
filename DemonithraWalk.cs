@@ -8,7 +8,7 @@ public class DemonithraWalk : MonoBehaviour {
 	public Sprite walk3;
 
 	void Start () {
-		InvokeRepeating ("Animate", 0f, 0.17f);	
+		InvokeRepeating ("Animate", 0f, 0.1f);	
 	}
 	
 	void Update () {
