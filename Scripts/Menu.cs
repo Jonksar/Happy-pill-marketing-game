@@ -10,28 +10,32 @@ public class Menu : MonoBehaviour {
 		TitleFadeIn,
 		Blank,
 		CrossFade,
-		MainMenu
+		TutorialLeft,
+		TutorialRight,
+		GlitchOut
 	};
 
 	private State state = State.Start;
 	private Image fader;
 	private Image background;
 	private Text text;
+	private Text tutorialText;
 	private float elapsed = 0;
 	private float startDuration = 2;
 	private float titleDuration = 9;
 	private float blankDuration = 2;
 	private float fadeDuration = 2;
-	private float mainSoundInterval = 5.5f;
+	private float glitchOutInterval = 2;
 	private SoundManager sounds;
 
-	private bool pressedLeft = false;
-	private bool pressedRight = false;
+	//private bool pressedLeft = false;
+	//private bool pressedRight = false;
 
 	void Start() {
 		fader = GameObject.Find("Fader").GetComponent<Image>();
 		background = GameObject.Find("Background").GetComponent<Image>();
 		text = GameObject.Find("TitleText").GetComponent<Text>();
+		tutorialText = GameObject.Find("TutorialText").GetComponent<Text>();
 		sounds = GameObject.Find("SoundManager").GetComponent<SoundManager>();
 	}
 
@@ -42,18 +46,17 @@ public class Menu : MonoBehaviour {
 
 		elapsed += Time.deltaTime;
 
-		if (Input.GetKeyDown (KeyCode.RightArrow) || Input.GetKeyDown (KeyCode.LeftArrow) || Input.GetKeyDown (KeyCode.A) || Input.GetKeyDown (KeyCode.D)) {
-			sounds.PlayPianoSFX ();
+		/*
+		if (Input.GetKeyDown (KeyCode.RightArrow) || Input.GetKeyDown (KeyCode.LeftArrow) || Input.GetKeyDown (KeyCode.A) || Input.GetKeyDown (KeyCode.D)) {			
 			if (Input.GetKeyDown (KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) {
+				sounds.PlayPianoSFX (1f);
 				this.pressedLeft = true;
 			} else {
+				sounds.PlayPianoSFX (1.777f);
 				this.pressedRight = true;
 			}
-
-			if (this.pressedLeft && this.pressedRight) {
-				Debug.Log ("Here");
-			}
 		} 
+		*/
 
 		switch (state) {
 			case State.Start:
@@ -69,7 +72,7 @@ public class Menu : MonoBehaviour {
 				if (elapsed > titleDuration) {
 					state = State.Blank;
 					elapsed = 0;
-				sounds.PlaySFX(sounds.glitchSFXs[3], sounds.glitchSFXvolume);
+					sounds.PlaySFX(sounds.glitchSFXs[3], sounds.glitchSFXvolume);
 				}
 				break;
 
@@ -89,23 +92,36 @@ public class Menu : MonoBehaviour {
   			    fader.color = Color.Lerp(Color.black, Color.clear, Mathf.Clamp01(elapsed / fadeDuration));
 
 				if (elapsed > fadeDuration) {
-					state = State.MainMenu;
-					elapsed = 0;
+					state = State.TutorialLeft;
+					tutorialText.text = "Press left arrow key";
 					sounds.PlayMentalitySFX();
 				}
 				break;
 
-			case State.MainMenu:
-				if (elapsed > mainSoundInterval) {
-					elapsed = 0;
-					sounds.PlayMentalitySFX();
+			case State.TutorialLeft:
+				if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) {
+					state = State.TutorialRight;
+					sounds.PlayPianoSFX(1f);
+					tutorialText.text = "Press right arrow key";
 				}
+				break;
 
+			case State.TutorialRight:
+				if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) {
+					state = State.GlitchOut;
+					elapsed = 0;
+					sounds.PlayPianoSFX(1.777f);
+					tutorialText.text = "Use the same keys in game";
+					//sounds.PlayGlitchSFX();
+				    Camera.main.GetComponent<GlitchEffectController>().GlitchOut (4.0f, glitchOutInterval);
+				}
+				break;
+
+			case State.GlitchOut: 
+				if (elapsed > glitchOutInterval) {
+					SceneManager.LoadScene (1);
+				}
 				break;
 		}
-	}
-
-	void ChangeSceneToGame() {
-		SceneManager.LoadScene ("GameScene");
 	}
 }

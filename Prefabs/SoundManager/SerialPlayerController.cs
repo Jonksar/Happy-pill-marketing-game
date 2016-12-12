@@ -32,4 +32,14 @@ public class SerialPlayerController : MonoBehaviour {
 		audioPlayer.time = 0f;
 		audioPlayer.Play ();
 	}
+
+	public void PlaySFXwPitch(AudioClip sfx_clip, float volume, float pitch) {
+		AudioSource audioPlayer = this.audioSources [sfx_source_index++ % n_audioSources];
+		audioPlayer.pitch = pitch;
+
+		audioPlayer.volume = volume;
+		audioPlayer.clip = sfx_clip;
+		audioPlayer.time = 0f;
+		audioPlayer.Play ();
+	}
 }

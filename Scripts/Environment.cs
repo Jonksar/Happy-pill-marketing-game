@@ -30,7 +30,10 @@ public class Environment : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (Input.GetKeyDown(KeyCode.Space)) {
+			pushThisButton = pushThisButton + 1 % 4;
+		}
+
 		if (pushThisButton != previous) {
 			if (pushThisButton == 2) {
 				ChangeEnvironment (2);

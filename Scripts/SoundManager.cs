@@ -33,7 +33,25 @@ public class SoundManager : MonoBehaviour {
 	[Header("Music (sorted by speed)")]
 	public AudioClip[] happyThemes;
 	public AudioClip[] sadThemes;
-	public AudioClip[] menuThemes;
+
+	[Header("Menu Music")]
+	public AudioClip menuMusic1;
+	public AudioClip menuMusic2;
+
+	[Header("Escalation Music")]
+	public AudioClip escalationMusic1;
+	public AudioClip escalationMusic2;
+
+	[Header("First Blood")]
+	public AudioClip firstBloodMusic;
+
+	[Header("Fighting Music")]
+	public AudioClip toFightingTransitionMusic;
+	public AudioClip fighting1Music;
+	public AudioClip fighting2Music;
+
+	[Header("Chill Pill Music")]
+	public AudioClip ChillPillMusic;
 
 	[Header("Instantiate properties")]
 	public GameObject fader;
@@ -55,21 +73,12 @@ public class SoundManager : MonoBehaviour {
 		sfx_obj.transform.SetParent (this.transform);
 	}
 
+	void Awake() {
+		DontDestroyOnLoad (this.gameObject);
+	}
+
 	public void ChangeTo(AudioClip audio) {
 		music_player.MakeFade(audio);
-	}
-
-	public void ChangeMusic(int speed, musicType type){
-		AudioClip[] clips =
-			type == musicType.Happy ? this.happyThemes :
-			type == musicType.Sad ? this.sadThemes : this.menuThemes;
-
-		ChangeTo(clips[speed]);
-	}
-
-	public void smth() {
-		this.ChangeMusic (this.musicIndexCounter % this.menuThemes.Length, musicType.MenuMusic);
-		this.musicIndexCounter++;
 	}
 
 	public void PlaySFX(AudioClip audio, float volume) {
@@ -97,7 +106,45 @@ public class SoundManager : MonoBehaviour {
 		PlaySFX(mentalitySFXs[Random.Range(0, mentalitySFXs.Length - 1)], mentalitySFXvolume);
 	}
 
-	public void PlayPianoSFX() {
-		PlaySFX (pianoSFX, 1f);
+	public void PlayPianoSFX(float pitch) {
+		this.sfx_player.PlaySFXwPitch (this.pianoSFX, 1f, pitch);
+	}
+
+	public void MenuMusic() {
+		CancelInvoke ();
+		InvokeRepeating ("IntroMusic_", 0f, menuMusic2.length - this.fadeTime);
+	}
+
+	public void FirstBlood() {
+		CancelInvoke ();
+		InvokeRepeating ("FirstBloodMusic_", escalationMusic1.length, escalationMusic2.length - this.fadeTime);
+	}
+
+	public void EscalationMusic() {
+		//this.ChangeTo ();
+		CancelInvoke ();
+		InvokeRepeating ("EscalationMusic_", escalationMusic1.length, escalationMusic2.length - this.fadeTime);
+	}
+
+	public void IntenseFightingMusic() {
+		//this.ChangeTo ();
+		CancelInvoke ();
+		//InvokeRepeating ();
+	}
+
+	private void EscalationMusic_() {
+		this.ChangeTo (escalationMusic2);
+	}
+
+	private void MenuMusic_() {
+		this.ChangeTo (menuMusic2);
+	}
+
+	private void FirstBloodMusic_() {
+		this.ChangeTo (firstBloodMusic);
+	}
+
+	private void FightingMusic_() {
+		this.ChangeTo (fighting2Music);
 	}
 }
