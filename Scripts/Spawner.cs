@@ -23,6 +23,10 @@ public class Spawner : MonoBehaviour {
 
 		spawnRate = 0.2f + 0.09f * Mathf.Sqrt(timesSpawned);
 
-		Invoke("Spawn", 1f / (spawnRate + Random.value * 0.333f * spawnRate));
+		if (GameObject.Find ("Environment").GetComponent<Environment> ().HappyPillTime) {
+			Invoke ("Spawn", Random.value * (7f - 6f) + 6f);
+		} else {
+		        Invoke("Spawn", 1f / (spawnRate + Random.value * 0.333f * spawnRate));
+		}
 	}
 }
