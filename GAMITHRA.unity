@@ -420,24 +420,6 @@ Prefab:
       propertyPath: spawnerR
       value: 
       objectReference: {fileID: 1482367066}
-    - target: {fileID: 114034097946109872, guid: fbe05fc19afb5174789fe58bc989756d,
-        type: 2}
-      propertyPath: room5
-      value: 
-      objectReference: {fileID: 21300000, guid: a092a4dc15979c2409a6035daa2e5b20,
-        type: 3}
-    - target: {fileID: 114433376560893582, guid: fbe05fc19afb5174789fe58bc989756d,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 236f288b2cf2f0f45bf61cdccdb64cbf,
-        type: 3}
-    - target: {fileID: 114624321704365372, guid: fbe05fc19afb5174789fe58bc989756d,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 18646586e24316848a6e40dbe5f1f919,
-        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fbe05fc19afb5174789fe58bc989756d, type: 2}
   m_IsPrefabParent: 0
