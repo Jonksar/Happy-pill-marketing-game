@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
@@ -31,6 +32,8 @@ public class PlayerController : MonoBehaviour {
 
 	private SpriteRenderer spriteRenderer;
 	private Sprite[] attackSprites = new Sprite[4];
+	private GameObject leftBox;
+	private GameObject rightBox;
 
 	private const float hitAreaWidth = 4;
 	private const float maxDistanceFromCentre = 7;
@@ -58,6 +61,8 @@ public class PlayerController : MonoBehaviour {
 
 		this.soundManager = GameObject.Find ("SoundManager").GetComponent<SoundManager>();
 
+		leftBox = GameObject.Find("LeftGuideBox");
+		rightBox = GameObject.Find("RightGuideBox");
 	}
 
 	void Update () {
@@ -117,8 +122,22 @@ public class PlayerController : MonoBehaviour {
 
 		if (health < 0 && isAlive) {
 			Die ();
-
 		}
+
+		UpdateGuideBoxes();
+	}
+
+	private void UpdateGuideBoxes() {
+		Vector3 pos = gameObject.transform.position;
+		Vector2 playerPos = Camera.main.WorldToScreenPoint(pos);
+		Vector2 leftReachPos = Camera.main.WorldToScreenPoint(pos + Vector3.left * hitAreaWidth);
+
+		float boxWidth = playerPos.x - leftReachPos.x;
+		leftBox.GetComponent<RectTransform>().sizeDelta = new Vector2(boxWidth, 40.0f);
+		rightBox.GetComponent<RectTransform>().sizeDelta = new Vector2(boxWidth, 40.0f);
+
+		leftBox.GetComponent<Image>().color = leftSide.Count > 0 ? Color.red : Color.grey;
+		rightBox.GetComponent<Image>().color = rightSide.Count > 0 ? Color.red : Color.grey;
 	}
 
 	void AttackOn() {
