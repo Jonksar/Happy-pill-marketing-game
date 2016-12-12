@@ -72,6 +72,13 @@ public class Enemy : MonoBehaviour {
 	}
 
 	void Update () {
+		env = GameObject.Find ("Environment").GetComponent<Environment> ().pushThisButton;
+
+		if (env == 5) {
+			speed = 0.4f;
+		} else {
+			speed = 7;
+		}
 		if (IsDead()) {
 			spriteRenderer.enabled = (blinking / blinkFrameDelta) % 2 == 0;
 			++blinking;
@@ -95,7 +102,6 @@ public class Enemy : MonoBehaviour {
 	}
 
 	private void Die() {
-		env = GameObject.Find ("Environment").GetComponent<Environment> ().pushThisButton;
 
 		if (env == 1)
 			spriteRenderer.sprite = dead1;
@@ -103,7 +109,7 @@ public class Enemy : MonoBehaviour {
 			spriteRenderer.sprite = dead1;
 		else if (env == 3)
 			spriteRenderer.sprite = dead2;
-		else if (env == 4)
+		else if (env >= 4)
 			spriteRenderer.sprite = dead3;
 		transform.position = new Vector3 (transform.position.x, transform.position.y - 1.8f, transform.position.z);
 		blinkFrameDelta = 3;
@@ -126,7 +132,7 @@ public class Enemy : MonoBehaviour {
 			spriteRenderer.sprite = kicked1;
 		else if (env == 3)
 			spriteRenderer.sprite = kicked2;
-		else if (env == 4)
+		else if (env >= 4)
 			spriteRenderer.sprite = kicked3;
 		float x = direction == Direction.left ? 1 : -1;
 		Vector3 impulse = new Vector3(x * hitXImpulse, hitYImpulse, 0);

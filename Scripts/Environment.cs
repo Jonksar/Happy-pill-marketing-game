@@ -8,7 +8,7 @@ public class Environment : MonoBehaviour {
 	public Sprite room2;
 	public Sprite room3;
 	public Sprite room4;
-
+	public Sprite room5;
 	public Sprite enemy1j;
 	public Sprite enemy2j;
 	public Sprite enemy3j;
@@ -18,6 +18,8 @@ public class Environment : MonoBehaviour {
 	public Sprite enemy3g;
 	public Sprite enemy4g;
 
+	public GameObject obj;
+
 	public Spawner spawnerL;
 	public Spawner spawnerR;
 
@@ -25,12 +27,12 @@ public class Environment : MonoBehaviour {
 	private int previous = 0;
 	// Use this for initialization
 	void Start () {
-		
+		InvokeRepeating ("InvokedChange", 5f, 15f);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Space)) {
+		if (Input.GetKeyDown(KeyCode.ScrollLock)) {
 			pushThisButton = pushThisButton + 1 % 4;
 		}
 
@@ -96,6 +98,20 @@ public class Environment : MonoBehaviour {
 			}
 			spawnerL.spriteIndex = 4;
 			spawnerR.spriteIndex = 4;
+		}
+
+		if (i == 5) {
+			GetComponent<SpriteRenderer> ().sprite = room5;
+			GameObject o = Instantiate (obj, new Vector3 (-6.21f, 2.5f, 0f), transform.rotation);
+		}
+	}
+		
+	public void InvokedChange() {
+		if (pushThisButton >= 4) {
+			pushThisButton = 1;
+		}
+		else {
+			pushThisButton++;
 		}
 	}
 		

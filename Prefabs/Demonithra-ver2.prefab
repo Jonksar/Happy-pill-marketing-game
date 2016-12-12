@@ -118,9 +118,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6fee820d3702d04d8c36eb2863ca1fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walk1: {fileID: 21300000, guid: 9c8e4b52d811a274399987bb3e241d89, type: 3}
-  walk2: {fileID: 21300000, guid: cc16256b219b6254580048e579523a36, type: 3}
-  walk3: {fileID: 21300000, guid: 52ebfe0456a7baa44ab48d6761420bef, type: 3}
+  walk1: {fileID: 21300000, guid: a708b95e1e3455d40a09e73eba7ddb90, type: 3}
+  walk2: {fileID: 21300000, guid: bf2da5e77cc421d46aeb4e071d007ca1, type: 3}
+  walk3: {fileID: 21300000, guid: 71c685ca07851b34db3f7891933e8a6a, type: 3}
+  walk1mono: {fileID: 21300000, guid: d18a23bd1e26a9348bb83528ad24b0cc, type: 3}
+  walk2mono: {fileID: 21300000, guid: 501128b05a0999544a804c2f9f0fd28e, type: 3}
+  walk3mono: {fileID: 21300000, guid: ec62375e179f7a64ea292fdaa1235d26, type: 3}
+  walk1true: {fileID: 21300000, guid: 10438a9c1736efd4f88e2bdc250e4ace, type: 3}
+  walk2true: {fileID: 21300000, guid: 4ed523ab220884648b5957208e24542d, type: 3}
+  walk3true: {fileID: 21300000, guid: a092a4dc15979c2409a6035daa2e5b20, type: 3}
+  env: 1
 --- !u!114 &114917580575878450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -153,8 +160,10 @@ MonoBehaviour:
   direction: 1
   dead1: {fileID: 21300000, guid: 92cf41ec5d9a6b24bb7fa552668a2380, type: 3}
   kicked1: {fileID: 21300000, guid: 90d6b9ed903aa11409baadbbbd52d6bc, type: 3}
-  dead2: {fileID: 21300000, guid: 0670e912ff0268c4ba7fece85691e96c, type: 3}
-  kicked2: {fileID: 21300000, guid: ada3d5dfa672f594da9532e43217da1f, type: 3}
+  dead2: {fileID: 21300000, guid: 95ecc3dee3bae164eabc03852a819de1, type: 3}
+  kicked2: {fileID: 21300000, guid: f03d0227be07e3d479b2f5db5de2b5be, type: 3}
+  dead3: {fileID: 21300000, guid: b73d6cc6f901cfd45bd2be6bd9f2c9f6, type: 3}
+  kicked3: {fileID: 21300000, guid: d4e730b5759796e499b1c9b27d0d469c, type: 3}
   env: 0
   demon: g
 --- !u!212 &212079459146816984

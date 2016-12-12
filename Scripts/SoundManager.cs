@@ -153,6 +153,12 @@ public class SoundManager : MonoBehaviour {
 		PlaySFX (comboSFX, comboSFXvolume);
 	}
 
+	public void playChillPill() {
+		this.ChangeTo (ChillPillMusic);
+		CancelInvoke ();
+		Invoke ("IntenseFightingMusic", ChillPillMusic.length - fadeTime);
+	}
+
 
 	public void playInsanitySFX() {
 		PlaySFX (InsanitySFX, comboSFXvolume);
@@ -162,8 +168,7 @@ public class SoundManager : MonoBehaviour {
 	public void playMadnessSFX() {
 		PlaySFX (MadnessSFX, comboSFXvolume);
 	}
-
-
+		
 	public void playPsychoSFX() {
 		PlaySFX (PsychoSFX, comboSFXvolume);
 	}

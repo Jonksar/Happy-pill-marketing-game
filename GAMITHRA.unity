@@ -146,36 +146,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114916101468954022, guid: 5adc56edd51d8e54ab2d8c43e32a8b0a,
-        type: 2}
-      propertyPath: zombiesPerMinute
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 114916101468954022, guid: 5adc56edd51d8e54ab2d8c43e32a8b0a,
-        type: 2}
-      propertyPath: spawnMaxRateSeconds
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114916101468954022, guid: 5adc56edd51d8e54ab2d8c43e32a8b0a,
-        type: 2}
-      propertyPath: baseSpawnRate
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114916101468954022, guid: 5adc56edd51d8e54ab2d8c43e32a8b0a,
-        type: 2}
-      propertyPath: deltaSpawnRate
-      value: 0.001
-      objectReference: {fileID: 0}
-    - target: {fileID: 114916101468954022, guid: 5adc56edd51d8e54ab2d8c43e32a8b0a,
-        type: 2}
-      propertyPath: spawnRate
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 114313409004079510, guid: 5adc56edd51d8e54ab2d8c43e32a8b0a,
-        type: 2}
-      propertyPath: spawnRate
-      value: 0.25
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5adc56edd51d8e54ab2d8c43e32a8b0a, type: 2}
   m_IsPrefabParent: 0
@@ -345,26 +315,6 @@ Prefab:
       propertyPath: playerDeathSFX.Array.data[1]
       value: 
       objectReference: {fileID: 8300000, guid: e0f5cd2ae4f6c7f429b377c011a9ce60, type: 3}
-    - target: {fileID: 114668924548797492, guid: 00b74fb7880ef914b97cb2096ed44d36,
-        type: 2}
-      propertyPath: comboSFX
-      value: 
-      objectReference: {fileID: 8300000, guid: f28bded76f22b5a4fa6895058a3a6353, type: 3}
-    - target: {fileID: 114668924548797492, guid: 00b74fb7880ef914b97cb2096ed44d36,
-        type: 2}
-      propertyPath: InsanitySFX
-      value: 
-      objectReference: {fileID: 8300000, guid: 3f8d5f2d5e9e7b94ea650c35021254cd, type: 3}
-    - target: {fileID: 114668924548797492, guid: 00b74fb7880ef914b97cb2096ed44d36,
-        type: 2}
-      propertyPath: MadnessSFX
-      value: 
-      objectReference: {fileID: 8300000, guid: 5551b571428cb564a93700afa8d39adb, type: 3}
-    - target: {fileID: 114668924548797492, guid: 00b74fb7880ef914b97cb2096ed44d36,
-        type: 2}
-      propertyPath: PsychoSFX
-      value: 
-      objectReference: {fileID: 8300000, guid: c7968ef892aa8a148842b13acb0be70a, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 00b74fb7880ef914b97cb2096ed44d36, type: 2}
   m_IsPrefabParent: 0
@@ -443,6 +393,21 @@ Prefab:
       propertyPath: score
       value: 
       objectReference: {fileID: 351800483}
+    - target: {fileID: 114306312013600038, guid: 777dc35fed24ca646b4094d1d5d85d5e,
+        type: 2}
+      propertyPath: changeSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114306312013600038, guid: 777dc35fed24ca646b4094d1d5d85d5e,
+        type: 2}
+      propertyPath: minIntensity
+      value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 114306312013600038, guid: 777dc35fed24ca646b4094d1d5d85d5e,
+        type: 2}
+      propertyPath: maxIntensity
+      value: 0.45
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 777dc35fed24ca646b4094d1d5d85d5e, type: 2}
   m_IsPrefabParent: 0
@@ -500,16 +465,12 @@ Prefab:
       propertyPath: spawnerR
       value: 
       objectReference: {fileID: 1482367066}
-    - target: {fileID: 114624321704365372, guid: fbe05fc19afb5174789fe58bc989756d,
+    - target: {fileID: 114034097946109872, guid: fbe05fc19afb5174789fe58bc989756d,
         type: 2}
-      propertyPath: m_Sprite
+      propertyPath: room5
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114433376560893582, guid: fbe05fc19afb5174789fe58bc989756d,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: a092a4dc15979c2409a6035daa2e5b20,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fbe05fc19afb5174789fe58bc989756d, type: 2}
   m_IsPrefabParent: 0

@@ -66,7 +66,7 @@ public class DemonithraWalk : MonoBehaviour {
 				switched = true;
 			}
 		}
-		else if (env == 4) {
+		else if (env >= 4) {
 			if (GetComponent<SpriteRenderer> ().sprite == walk1true) {
 				GetComponent<SpriteRenderer> ().sprite = walk2true;
 			} else if (GetComponent<SpriteRenderer> ().sprite == walk2true) {
