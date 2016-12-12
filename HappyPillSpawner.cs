@@ -15,7 +15,7 @@ public class HappyPillSpawner : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Space) && pillSpawned) {
-			GameObject.Find ("Environment").GetComponent<Environment> ().pushThisButton = 5;
+			GameObject.Find ("Environment").GetComponent<Environment> ().HappyPillStartUseEat();
 			GameObject.Find ("Happy Pill").GetComponent<Image> ().color = Color.clear;
 			GameObject.Find ("Text").GetComponent<Text> ().color = Color.clear;
 		}

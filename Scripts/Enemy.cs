@@ -75,7 +75,7 @@ public class Enemy : MonoBehaviour {
 		env = GameObject.Find ("Environment").GetComponent<Environment> ().pushThisButton;
 
 		if (env == 5) {
-			speed = 0.4f;
+			speed = 0.8f;
 		} else {
 			speed = 7;
 		}

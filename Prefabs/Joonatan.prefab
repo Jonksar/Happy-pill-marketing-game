@@ -237,9 +237,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ede48a2e10a9a5646afed3054ad233f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minIntensity: 0.176
-  maxIntensity: 0.507
-  changeSpeed: 0.69
+  minIntensity: 0.09
+  maxIntensity: 0.45
+  changeSpeed: 0.5
 --- !u!114 &114343921589253252
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -25,9 +25,11 @@ public class Environment : MonoBehaviour {
 	public Spawner spawnerL;
 	public Spawner spawnerR;
 
+	public bool HappyPillTime = false;
+
 	public int pushThisButton = 1;
 	private int previous = 0;
-
+	private int beforePill = 0;
 	// Use this for initialization
 	void Start () {
 		InvokeRepeating ("InvokedChange", 5f, 15f);
@@ -109,12 +111,16 @@ public class Environment : MonoBehaviour {
 			GetComponent<SpriteRenderer> ().sprite = room5;
 			o = Instantiate (obj, new Vector3 (-7f, 2.5f, 0f), transform.rotation);
 			o2 = Instantiate (obj, new Vector3 (1f, 2f, 0f), transform.rotation);
-
+			/*foreach (Enemy x in Enemy.enemies) {
+				Destroy (x);
+			}*/
 			Invoke ("DestroyDikDik", 5f);
 		}
 	}
 		
 	public void InvokedChange() {
+		if (HappyPillTime)
+			return;
 		if (pushThisButton >= 4) {
 			pushThisButton = 1;
 		}
@@ -122,7 +128,16 @@ public class Environment : MonoBehaviour {
 			pushThisButton++;
 		}
 	}
-
+	public void HappyPillStartUseEat() {
+		HappyPillTime = true;
+		beforePill = pushThisButton;
+		pushThisButton = 5;
+		Invoke ("HappyPillStopDontUseDontEat", 8f);
+	}
+	public void HappyPillStopDontUseDontEat() {
+		pushThisButton = beforePill;
+		HappyPillTime = false;
+	}
 	public void DestroyDikDik(){
 		Destroy (o);
 		Destroy (o2);
