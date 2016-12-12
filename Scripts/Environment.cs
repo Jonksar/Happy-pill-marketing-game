@@ -132,6 +132,8 @@ public class Environment : MonoBehaviour {
 		HappyPillTime = true;
 		beforePill = pushThisButton;
 		pushThisButton = 5;
+		GameObject.Find ("SoundManager").GetComponent<SoundManager> ().playChillPill ();
+
 		Invoke ("HappyPillStopDontUseDontEat", 8f);
 	}
 	public void HappyPillStopDontUseDontEat() {
