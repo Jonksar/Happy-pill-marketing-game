@@ -91,6 +91,16 @@ NavMeshSettings:
     cellSize: 0.16666667
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &28169328 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1102551799837996, guid: fbe05fc19afb5174789fe58bc989756d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1979001534}
+--- !u!20 &231324566 stripped
+Camera:
+  m_PrefabParentObject: {fileID: 20886134891773760, guid: 777dc35fed24ca646b4094d1d5d85d5e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1942463866}
 --- !u!1001 &1019483458
 Prefab:
   m_ObjectHideFlags: 0
@@ -130,21 +140,71 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114916101468954022, guid: 5adc56edd51d8e54ab2d8c43e32a8b0a,
-        type: 2}
-      propertyPath: obj
-      value: 
-      objectReference: {fileID: 1915259649658838, guid: 98ddfe4fcdc73c7448bd456698fa491c,
-        type: 2}
-    - target: {fileID: 114313409004079510, guid: 5adc56edd51d8e54ab2d8c43e32a8b0a,
-        type: 2}
-      propertyPath: obj
-      value: 
-      objectReference: {fileID: 1915259649658838, guid: 98ddfe4fcdc73c7448bd456698fa491c,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5adc56edd51d8e54ab2d8c43e32a8b0a, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1354430928
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1354430931}
+  - component: {fileID: 1354430930}
+  - component: {fileID: 1354430929}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1354430929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1354430928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &1354430930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1354430928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 5
+--- !u!4 &1354430931
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1354430928}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1387540343
 Prefab:
   m_ObjectHideFlags: 0
@@ -199,6 +259,11 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1019483458}
   m_Script: {fileID: 11500000, guid: 273dd9a1069c4644d992aff40ab61575, type: 3}
+--- !u!1 &1825836692 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1449608086773930, guid: fbe05fc19afb5174789fe58bc989756d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1979001534}
 --- !u!1001 &1942463866
 Prefab:
   m_ObjectHideFlags: 0
@@ -238,6 +303,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114286297396342114, guid: 777dc35fed24ca646b4094d1d5d85d5e,
+        type: 2}
+      propertyPath: ComboLiteralText
+      value: 
+      objectReference: {fileID: 1825836692}
+    - target: {fileID: 114286297396342114, guid: 777dc35fed24ca646b4094d1d5d85d5e,
+        type: 2}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 28169328}
     - target: {fileID: 1010354782228390, guid: 777dc35fed24ca646b4094d1d5d85d5e, type: 2}
       propertyPath: m_Name
       value: Player
@@ -284,6 +359,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 223477591108010304, guid: fbe05fc19afb5174789fe58bc989756d,
+        type: 2}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 231324566}
     - target: {fileID: 114034097946109872, guid: fbe05fc19afb5174789fe58bc989756d,
         type: 2}
       propertyPath: spawnerL
