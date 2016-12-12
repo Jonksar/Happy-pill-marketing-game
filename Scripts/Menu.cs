@@ -21,11 +21,13 @@ public class Menu : MonoBehaviour {
 	private Text text;
 	private Text tutorialText;
 	private float elapsed = 0;
-	private float startDuration = 2;
-	private float titleDuration = 9;
-	private float blankDuration = 2;
-	private float fadeDuration = 2;
+	private float startDuration = 10.7f;
+	private float titleDuration = 10f;
+	private float someConstant = 1f; 
+	private float blankDuration = 1f;
+	private float fadeDuration = 8f;
 	private float glitchOutInterval = 2;
+
 	private SoundManager sounds;
 
 	//private bool pressedLeft = false;
@@ -67,7 +69,7 @@ public class Menu : MonoBehaviour {
 				break;
 
 			case State.TitleFadeIn:
-				fader.color = Color.Lerp(Color.black, Color.clear, Mathf.Clamp01(elapsed / titleDuration));
+				fader.color = Color.Lerp(Color.black, Color.clear, 1000000 * Mathf.Clamp01(elapsed / titleDuration));
 
 				if (elapsed > titleDuration) {
 					state = State.Blank;
@@ -76,20 +78,21 @@ public class Menu : MonoBehaviour {
 				}
 				break;
 
-			case State.Blank:
-				fader.color = Color.black;
+		case State.Blank:
+			fader.color = Color.black;
 
-				if (elapsed > blankDuration) {
-					state = State.CrossFade;
-					elapsed = 0;
-					sounds.PlayGlitchSFX();
-				}
-				break;
+			if (elapsed > blankDuration) {
+				state = State.CrossFade;
+				elapsed = 0;
+				sounds.PlaySFX(sounds.glitchSFXs[5], sounds.glitchSFXvolume);
+
+			}
+			break;
 
 			case State.CrossFade:
 				text.color = Color.clear;
 				background.color = Color.clear;
-  			    fader.color = Color.Lerp(Color.black, Color.clear, Mathf.Clamp01(elapsed / fadeDuration));
+			fader.color = Color.Lerp(Color.black, Color.clear, Mathf.Clamp01(elapsed / fadeDuration));
 
 				if (elapsed > fadeDuration) {
 					state = State.TutorialLeft;
