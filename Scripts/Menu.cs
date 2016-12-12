@@ -23,7 +23,6 @@ public class Menu : MonoBehaviour {
 	private float elapsed = 0;
 	private float startDuration = 10.7f;
 	private float titleDuration = 10f;
-	private float someConstant = 1f; 
 	private float blankDuration = 1f;
 	private float fadeDuration = 8f;
 	private float glitchOutInterval = 2;
