@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class HappyPillSpawner : MonoBehaviour {
 	public bool pillSpawned = false;
-	public GameObject obj;
 	// Use this for initialization
 	void Start () {
 		Invoke ("SpawnPill", 3f);

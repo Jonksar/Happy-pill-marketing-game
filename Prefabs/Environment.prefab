@@ -165,14 +165,15 @@ MonoBehaviour:
   enemy1j: {fileID: 21300000, guid: 029116a71e466d547a7592e341a631fd, type: 3}
   enemy2j: {fileID: 21300000, guid: 029116a71e466d547a7592e341a631fd, type: 3}
   enemy3j: {fileID: 21300000, guid: 9924ee4f015d3d54fa48d0b6021ee4ed, type: 3}
-  enemy4j: {fileID: 21300000, guid: 9924ee4f015d3d54fa48d0b6021ee4ed, type: 3}
+  enemy4j: {fileID: 21300000, guid: 418b3f6f9ff6fa549a62532ed42a4861, type: 3}
   enemy1g: {fileID: 21300000, guid: a708b95e1e3455d40a09e73eba7ddb90, type: 3}
   enemy2g: {fileID: 21300000, guid: a708b95e1e3455d40a09e73eba7ddb90, type: 3}
-  enemy3g: {fileID: 21300000, guid: 9c8e4b52d811a274399987bb3e241d89, type: 3}
-  enemy4g: {fileID: 21300000, guid: 9c8e4b52d811a274399987bb3e241d89, type: 3}
+  enemy3g: {fileID: 21300000, guid: d18a23bd1e26a9348bb83528ad24b0cc, type: 3}
+  enemy4g: {fileID: 21300000, guid: a708b95e1e3455d40a09e73eba7ddb90, type: 3}
   obj: {fileID: 1191291594685932, guid: 729baec628b4956478e804de33d2a033, type: 2}
   spawnerL: {fileID: 0}
   spawnerR: {fileID: 0}
+  HappyPillTime: 0
   pushThisButton: 1
 --- !u!114 &114223870061421756
 MonoBehaviour:
@@ -230,7 +231,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 236f288b2cf2f0f45bf61cdccdb64cbf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -268,7 +269,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 18646586e24316848a6e40dbe5f1f919, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

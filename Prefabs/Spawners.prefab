@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4669911210073704}
+  - component: {fileID: 114295138476272822}
   m_Layer: 0
   m_Name: Spawners
   m_TagString: Untagged
@@ -99,6 +100,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114295138476272822
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1318750832282734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7528cdbc5f6d9204699a7377f7a724dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pillSpawned: 0
 --- !u!114 &114313409004079510
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -112,8 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj: {fileID: 1915259649658838, guid: 98ddfe4fcdc73c7448bd456698fa491c, type: 2}
   direction: 0
-  spawnMinRateSeconds: 0.6
-  spawnMaxRateSeconds: 2
+  spawnRate: 1
   spriteIndex: 1
 --- !u!114 &114916101468954022
 MonoBehaviour:
@@ -128,6 +140,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj: {fileID: 1915259649658838, guid: 98ddfe4fcdc73c7448bd456698fa491c, type: 2}
   direction: 1
-  spawnMinRateSeconds: 0.6
-  spawnMaxRateSeconds: 2
+  spawnRate: 1
   spriteIndex: 1
