@@ -133,8 +133,8 @@ public class PlayerController : MonoBehaviour {
 		Vector2 leftReachPos = Camera.main.WorldToScreenPoint(pos + Vector3.left * hitAreaWidth);
 
 		float boxWidth = playerPos.x - leftReachPos.x;
-		leftBox.GetComponent<RectTransform>().sizeDelta = new Vector2(boxWidth, 40.0f);
-		rightBox.GetComponent<RectTransform>().sizeDelta = new Vector2(boxWidth, 40.0f);
+		leftBox.GetComponent<RectTransform>().sizeDelta = new Vector2(boxWidth * 3f, 40.0f);
+		rightBox.GetComponent<RectTransform>().sizeDelta = new Vector2(boxWidth * 3f , 40.0f);
 
 		leftBox.GetComponent<Image>().color = leftSide.Count > 0 ? Color.red : Color.grey;
 		rightBox.GetComponent<Image>().color = rightSide.Count > 0 ? Color.red : Color.grey;

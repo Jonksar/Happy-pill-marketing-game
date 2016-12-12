@@ -33,8 +33,6 @@ public class ScoreSystem : MonoBehaviour {
 	private GameObject failLiteralText;
 	private RectTransform failLiteralRectT;
 
-	public float failTime = 1000000f;
-
 
 	// Use this for initialization
 	void Start () {
@@ -55,17 +53,10 @@ public class ScoreSystem : MonoBehaviour {
 	}
 
 	void Update() {
-		failTime += Time.deltaTime;
 
 		ComboLiteralRectT.localScale = Vector3.Lerp (ComboLiteralRectT.localScale, comboLiteralScale, 10f * Time.deltaTime);
 		ComboLiteralRectT.eulerAngles = Vector3.Lerp (ComboLiteralRectT.eulerAngles, comboLiteralRotation, 10f * Time.deltaTime);  
-
-		if (Time.time - lastHitTime > comboTimeout) {
-			ComboFail ();
-		}
-
 		//Debug.Log (failTime);
-		failLiteralRectT.localScale = 3f *Vector3.one * failSizeCurve.Evaluate(Mathf.Clamp01(failTime)); 
 	}
 
 	private void ComboTextUpdate() {
@@ -77,13 +68,17 @@ public class ScoreSystem : MonoBehaviour {
 
 		if (killCount > 4) {
 			comboText = "Combo! ";
-
-			if (killCount > 15) {
+			if (killCount > 4 && killCount < 10) {
+				sounds.playComboSFX ();
+			} else if (killCount >= 10 && killCount < 15) {
 				comboText = "Insanity! ";
-			} else if (killCount > 30) {
-				comboText = "Maddness! ";
-			} else if (killCount > 75) {
+				sounds.playInsanitySFX ();
+			} else if (killCount >= 15 && killCount < 25) {
+				comboText = "Madness! ";
+				sounds.playMadnessSFX ();
+			} else if (killCount >= 25) {
 				comboText = "Psycho! ";
+				sounds.playPsychoSFX ();
 			}
 
 			ComboLiteralText.GetComponent<Text>().text = comboText + killCount.ToString();
@@ -117,7 +112,6 @@ public class ScoreSystem : MonoBehaviour {
 	}
 
 	public void ComboFail() {
-		failTime = 0f; 
 		Debug.Log ("Combo fail");
 		this.multiplier = 1f;
 		killCount = 0;

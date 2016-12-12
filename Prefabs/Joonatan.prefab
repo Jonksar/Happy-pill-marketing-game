@@ -226,7 +226,6 @@ MonoBehaviour:
   ComboLiteralText: {fileID: 0}
   canvas: {fileID: 0}
   TextPrefab: {fileID: 1243025804027688, guid: e300d7427f4c2ec4ea2910aa79b7681e, type: 2}
-  failTime: 0
 --- !u!114 &114306312013600038
 MonoBehaviour:
   m_ObjectHideFlags: 1

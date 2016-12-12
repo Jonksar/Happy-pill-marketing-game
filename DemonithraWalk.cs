@@ -26,7 +26,6 @@ public class DemonithraWalk : MonoBehaviour {
 
 	void Animate() {
 		env = GameObject.Find ("Environment").GetComponent<Environment> ().pushThisButton;
-		Debug.Log (env);
 		if (prevenv != env) {
 			switched = false;
 		}

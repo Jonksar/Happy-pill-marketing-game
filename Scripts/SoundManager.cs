@@ -31,6 +31,7 @@ public class SoundManager : MonoBehaviour {
 	[Range(0f, 1f)] public float mentalitySFXvolume = 1f;
 	[Range(0f, 1f)] public float musicSFXvolume = 1f;
 	[Range(0f, 1f)] public float playerDeathSFXVolume = 1f;
+	[Range(0f, 1f)] public float comboSFXvolume = 1f;
 
 	[Header("Music (sorted by speed)")]
 	public AudioClip[] happyThemes;
@@ -52,6 +53,12 @@ public class SoundManager : MonoBehaviour {
 	public AudioClip toFightingTransitionMusic;
 	public AudioClip fighting1Music;
 	public AudioClip fighting2Music;
+
+	[Header("Combo SFX")]
+	public AudioClip comboSFX;
+	public AudioClip InsanitySFX;
+	public AudioClip MadnessSFX;
+	public AudioClip PsychoSFX;
 
 	[Header("Chill Pill Music")]
 	public AudioClip ChillPillMusic;
@@ -140,6 +147,25 @@ public class SoundManager : MonoBehaviour {
 		CancelInvoke ();
 		Invoke("FightingMusic2_", fighting1Music.length - this.fadeTime);
 		InvokeRepeating("FightingMusic3_", fighting1Music.length + fighting2Music.length - 2 * fadeTime, fighting2Music.length - this.fadeTime);
+	}
+
+	public void playComboSFX() {
+		PlaySFX (comboSFX, comboSFXvolume);
+	}
+
+
+	public void playInsanitySFX() {
+		PlaySFX (InsanitySFX, comboSFXvolume);
+	}
+
+
+	public void playMadnessSFX() {
+		PlaySFX (MadnessSFX, comboSFXvolume);
+	}
+
+
+	public void playPsychoSFX() {
+		PlaySFX (PsychoSFX, comboSFXvolume);
 	}
 
 	private void EscalationMusic21_() {
