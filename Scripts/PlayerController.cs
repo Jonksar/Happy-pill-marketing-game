@@ -216,6 +216,10 @@ public class PlayerController : MonoBehaviour {
 
 	private void UpdateGuideBoxes() {
 		Vector3 pos = gameObject.transform.position;
+		if (spriteRenderer == null || spriteRenderer.sprite == null) {
+			return;
+		}	
+
 		Vector3 playerBottom = Camera.main.WorldToScreenPoint(new Vector3(pos.x, pos.y - spriteRenderer.sprite.bounds.extents.y, pos.z));
 
 		leftBox.GetComponent<RectTransform>().anchoredPosition = new Vector2(pos.x - 100.0f, playerBottom.y);

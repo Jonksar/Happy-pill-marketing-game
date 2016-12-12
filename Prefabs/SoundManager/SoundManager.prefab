@@ -72,12 +72,9 @@ MonoBehaviour:
   fadeTime: 2.1
   maxVolume: 1
   punchSFXs:
-  - {fileID: 8300000, guid: 94f1a89722ffe8b44936fc40c5c85fad, type: 3}
+  - {fileID: 8300000, guid: 5da424e0755403644b6c21e80ec2e676, type: 3}
   - {fileID: 8300000, guid: 6190acf1c9bf88f4782fbfe4926bb7e6, type: 3}
   - {fileID: 8300000, guid: 39a8a4613903f1041884750a6fec4846, type: 3}
-  - {fileID: 8300000, guid: 5da424e0755403644b6c21e80ec2e676, type: 3}
-  - {fileID: 8300000, guid: 9693690d1f12a8c40ac539fd5b9d0fdc, type: 3}
-  - {fileID: 8300000, guid: a9f7550fc3a1af54c814eacaf9ff06e2, type: 3}
   monsterHitSFXs:
   - {fileID: 8300000, guid: 451b28ca16e8cc34c8d3eb593d723092, type: 3}
   - {fileID: 8300000, guid: 19a78026dff987f4d887ad03ad0566ed, type: 3}
@@ -120,14 +117,16 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 58e47da1fdf6d9841addf8bc1ebce475, type: 3}
   pianoSFX: {fileID: 8300000, guid: 2b707c2628dbf434cb9fc199543454ff, type: 3}
   playerDeathSFX:
-  - {fileID: 8300000, guid: 228dcaacaef39b348896233d39a42a33, type: 3}
+  - {fileID: 8300000, guid: bf122a164f95e9841ad3d54b79a6dac7, type: 3}
+  - {fileID: 8300000, guid: e0f5cd2ae4f6c7f429b377c011a9ce60, type: 3}
   punchSFXvolume: 1
-  monsterHitSFXvolume: 1
+  monsterHitSFXvolume: 0.8
   playerHitSFXvolume: 1
   glitchSFXvolume: 0.4
   mentalitySFXvolume: 0.6
-  musicSFXvolume: 1
+  musicSFXvolume: 0.8
   playerDeathSFXVolume: 1
+  comboSFXvolume: 1
   happyThemes: []
   sadThemes: []
   menuMusic1: {fileID: 8300000, guid: 8d798775cd65be449bba6722cfcede8c, type: 3}
@@ -140,7 +139,11 @@ MonoBehaviour:
     type: 3}
   fighting1Music: {fileID: 8300000, guid: b1b7c94fd8e2ba147bd1ca6968b40afc, type: 3}
   fighting2Music: {fileID: 8300000, guid: 75ee1991b35a1314e8eaeadc50bc97ca, type: 3}
-  ChillPillMusic: {fileID: 8300000, guid: 7a7f6ea8d283ec44f9e9e6d16d8c0572, type: 3}
+  comboSFX: {fileID: 8300000, guid: 8eb6664ddfb0bef4fbdc18582bd5de7d, type: 3}
+  InsanitySFX: {fileID: 8300000, guid: 40ccf7618dc873f4695f8c150f5b1b3e, type: 3}
+  MadnessSFX: {fileID: 8300000, guid: 27b7b86a26d87fa468fa5711a5ee5979, type: 3}
+  PsychoSFX: {fileID: 8300000, guid: 798137aedc16cce4b8f0dfda1746c853, type: 3}
+  ChillPillMusic: {fileID: 8300000, guid: 198ffcad5a293c144a043ec7e09d6c6e, type: 3}
   fader: {fileID: 1229811501090740, guid: 6874be08a5492eb4496089c78aa90ac9, type: 2}
   serialPlayer: {fileID: 1087800306809192, guid: 78e9a1ecb3f749941ace2497ce65af4c,
     type: 2}
