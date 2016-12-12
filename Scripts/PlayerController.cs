@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour {
 
 	private SpriteRenderer spriteRenderer;
 	private Sprite[] attackSprites = new Sprite[4];
+	private GameObject canvas;
 	private GameObject leftBox;
 	private GameObject rightBox;
 
@@ -63,6 +64,7 @@ public class PlayerController : MonoBehaviour {
 
 		leftBox = GameObject.Find("LeftGuideBox");
 		rightBox = GameObject.Find("RightGuideBox");
+		canvas = GameObject.Find("Canvas");
 	}
 
 	void Update () {
@@ -129,15 +131,13 @@ public class PlayerController : MonoBehaviour {
 
 	private void UpdateGuideBoxes() {
 		Vector3 pos = gameObject.transform.position;
-		Vector2 playerPos = Camera.main.WorldToScreenPoint(pos);
-		Vector2 leftReachPos = Camera.main.WorldToScreenPoint(pos + Vector3.left * hitAreaWidth);
+		Vector3 playerBottom = Camera.main.WorldToScreenPoint(new Vector3(pos.x, pos.y - spriteRenderer.sprite.bounds.extents.y, pos.z));
 
-		float boxWidth = playerPos.x - leftReachPos.x;
-		leftBox.GetComponent<RectTransform>().sizeDelta = new Vector2(boxWidth, 40.0f);
-		rightBox.GetComponent<RectTransform>().sizeDelta = new Vector2(boxWidth, 40.0f);
+		leftBox.GetComponent<RectTransform>().anchoredPosition = new Vector2(pos.x - 100.0f, playerBottom.y);
+		rightBox.GetComponent<RectTransform>().anchoredPosition = new Vector2(pos.x + 100.0f, playerBottom.y);
 
-		leftBox.GetComponent<Image>().color = leftSide.Count > 0 ? Color.red : Color.grey;
-		rightBox.GetComponent<Image>().color = rightSide.Count > 0 ? Color.red : Color.grey;
+		leftBox.GetComponent<Image>().color = leftSide.Count > 0 ? Color.red : Color.black;
+		rightBox.GetComponent<Image>().color = rightSide.Count > 0 ? Color.red : Color.black;
 	}
 
 	void AttackOn() {
