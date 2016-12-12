@@ -33,9 +33,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1510452905684790}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 572.2466, y: 284.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4356.8105, y: 2195.7625, z: 0}
+  m_LocalScale: {x: 7.613519, y: 7.7017274, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -51,5 +51,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33115fd27e372704b9d1c290a1583d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  comboTimeout: 2
   killCount: 0
   score: 0
+  multiplier: 1
+  failSizeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.49986112
+      value: 1.0111328
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 0
+    m_RotationOrder: 0
+  ComboLiteralText: {fileID: 0}
+  canvas: {fileID: 0}
+  TextPrefab: {fileID: 1243025804027688, guid: e300d7427f4c2ec4ea2910aa79b7681e, type: 2}
+  failTime: 0
