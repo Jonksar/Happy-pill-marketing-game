@@ -19,12 +19,15 @@ public class Environment : MonoBehaviour {
 	public Sprite enemy4g;
 
 	public GameObject obj;
+	private GameObject o;
+	private GameObject o2;
 
 	public Spawner spawnerL;
 	public Spawner spawnerR;
 
 	public int pushThisButton = 1;
 	private int previous = 0;
+
 	// Use this for initialization
 	void Start () {
 		InvokeRepeating ("InvokedChange", 5f, 15f);
@@ -45,6 +48,8 @@ public class Environment : MonoBehaviour {
 				ChangeEnvironment (3);
 			} else if (pushThisButton == 4) {
 				ChangeEnvironment (4);
+			} else if (pushThisButton == 5) {
+				ChangeEnvironment (5);
 			}
 		}
 		previous = pushThisButton;
@@ -102,7 +107,10 @@ public class Environment : MonoBehaviour {
 
 		if (i == 5) {
 			GetComponent<SpriteRenderer> ().sprite = room5;
-			GameObject o = Instantiate (obj, new Vector3 (-6.21f, 2.5f, 0f), transform.rotation);
+			o = Instantiate (obj, new Vector3 (-7f, 2.5f, 0f), transform.rotation);
+			o2 = Instantiate (obj, new Vector3 (1f, 2f, 0f), transform.rotation);
+
+			Invoke ("DestroyDikDik", 5f);
 		}
 	}
 		
@@ -113,6 +121,11 @@ public class Environment : MonoBehaviour {
 		else {
 			pushThisButton++;
 		}
+	}
+
+	public void DestroyDikDik(){
+		Destroy (o);
+		Destroy (o2);
 	}
 		
 }
