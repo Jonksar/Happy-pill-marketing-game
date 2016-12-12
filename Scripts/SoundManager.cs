@@ -22,6 +22,7 @@ public class SoundManager : MonoBehaviour {
 	public AudioClip[] glitchSFXs;
 	public AudioClip[] mentalitySFXs;
 	public AudioClip pianoSFX;
+	public AudioClip[] playerDeathSFX;
 
 	[Range(0f, 1f)] public float punchSFXvolume = 1f;
 	[Range(0f, 1f)] public float monsterHitSFXvolume = 1f;
@@ -29,6 +30,7 @@ public class SoundManager : MonoBehaviour {
 	[Range(0f, 1f)] public float glitchSFXvolume = 1f;
 	[Range(0f, 1f)] public float mentalitySFXvolume = 1f;
 	[Range(0f, 1f)] public float musicSFXvolume = 1f;
+	[Range(0f, 1f)] public float playerDeathSFXVolume = 1f;
 
 	[Header("Music (sorted by speed)")]
 	public AudioClip[] happyThemes;
@@ -77,7 +79,7 @@ public class SoundManager : MonoBehaviour {
 	}
 
 	public void PlayPunchSFX() {
-		PlaySFX(monsterHitSFXs[Random.Range(0, punchSFXs.Length - 1)], punchSFXvolume);
+		PlaySFX(punchSFXs[Random.Range(0, punchSFXs.Length - 1)], punchSFXvolume);
 
 	}
 
@@ -99,5 +101,9 @@ public class SoundManager : MonoBehaviour {
 
 	public void PlayPianoSFX() {
 		PlaySFX (pianoSFX, 1f);
+	}
+
+	public void PlayPlayerDeath() {
+		PlaySFX (playerDeathSFX[Random.Range(0, playerDeathSFX.Length - 1)], playerDeathSFXVolume);
 	}
 }

@@ -12,7 +12,10 @@ public class PlayerController : MonoBehaviour {
 	public Sprite attack4;
 	public Sprite wallslide;
 	public Sprite dead;
+
+
 	public int health = 10;
+	public bool isAlive = true;
 
 	private enum State {
 		Idle,
@@ -103,7 +106,7 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 
-		if (health < 0) {
+		if (health < 0 && isAlive) {
 			Die ();
 
 		}
@@ -139,7 +142,9 @@ public class PlayerController : MonoBehaviour {
 
 	private void Die() {
 		Debug.Log("Die");
+		isAlive = false;
 		spriteRenderer.sprite = dead;
+		soundManager.PlayPlayerDeath ();
 	}
 
 	private void UpdateLists() {
