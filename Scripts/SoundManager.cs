@@ -42,7 +42,8 @@ public class SoundManager : MonoBehaviour {
 
 	[Header("Escalation Music")]
 	public AudioClip escalationMusic1;
-	public AudioClip escalationMusic2;
+	public AudioClip escalationMusic21;
+	public AudioClip escalationMusic22;
 
 	[Header("First Blood")]
 	public AudioClip firstBloodMusic;
@@ -112,30 +113,37 @@ public class SoundManager : MonoBehaviour {
 		this.sfx_player.PlaySFXwPitch (this.pianoSFX, 1f, pitch);
 	}
 
+
+	public void PlayPlayerDeath() {
+		PlaySFX (playerDeathSFX[Random.Range(0, playerDeathSFX.Length - 1)], playerDeathSFXVolume);
+	}
+
 	public void MenuMusic() {
 		CancelInvoke ();
-		InvokeRepeating ("IntroMusic_", 0f, menuMusic2.length - this.fadeTime);
+		InvokeRepeating ("MenuMusic_", 0f, menuMusic2.length - this.fadeTime);
 	}
 
 	public void FirstBlood() {
 		CancelInvoke ();
-		InvokeRepeating ("FirstBloodMusic_", escalationMusic1.length, escalationMusic2.length - this.fadeTime);
+		InvokeRepeating ("FirstBloodMusic_", 0f, escalationMusic22.length - this.fadeTime);
 	}
 
 	public void EscalationMusic() {
-		//this.ChangeTo ();
+		this.ChangeTo (escalationMusic1);
 		CancelInvoke ();
-		InvokeRepeating ("EscalationMusic_", escalationMusic1.length, escalationMusic2.length - this.fadeTime);
+		Invoke ("EscalationMusic22_", escalationMusic1.length - fadeTime);
+		InvokeRepeating ("EscalationMusic21_", escalationMusic1.length + escalationMusic22.length - 2 * fadeTime, escalationMusic22.length - this.fadeTime);
 	}
 
 	public void IntenseFightingMusic() {
-		//this.ChangeTo ();
+		this.ChangeTo (toFightingTransitionMusic);
 		CancelInvoke ();
-		//InvokeRepeating ();
+		Invoke("FightingMusic2_", fighting1Music.length - this.fadeTime);
+		InvokeRepeating("FightingMusic3_", fighting1Music.length + fighting2Music.length - 2 * fadeTime, fighting2Music.length - this.fadeTime);
 	}
 
-	private void EscalationMusic_() {
-		this.ChangeTo (escalationMusic2);
+	private void EscalationMusic21_() {
+		this.ChangeTo (escalationMusic22);
 	}
 
 	private void MenuMusic_() {
@@ -146,11 +154,12 @@ public class SoundManager : MonoBehaviour {
 		this.ChangeTo (firstBloodMusic);
 	}
 
-	private void FightingMusic_() {
+	private void FightingMusic2_() {
+		this.ChangeTo (fighting1Music);
+	}
+
+	private void FightingMusic3_() {
 		this.ChangeTo (fighting2Music);
 	}
 
-	public void PlayPlayerDeath() {
-		PlaySFX (playerDeathSFX[Random.Range(0, playerDeathSFX.Length - 1)], playerDeathSFXVolume);
-	}
 }

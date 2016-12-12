@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
+	[Header("Sprites")]
 	public Sprite idle;
 	public Sprite attack1;
 	public Sprite attack2;
@@ -13,9 +14,14 @@ public class PlayerController : MonoBehaviour {
 	public Sprite wallslide;
 	public Sprite dead;
 
-
+	[Header("Healthiness")]
 	public int health = 10;
 	public bool isAlive = true;
+
+
+	[Header("Score System")]
+	public ScoreSystem score;
+
 
 	private enum State {
 		Idle,
@@ -41,6 +47,7 @@ public class PlayerController : MonoBehaviour {
 
 	private SoundManager soundManager;
 
+
 	void Start() {
 		spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -50,6 +57,7 @@ public class PlayerController : MonoBehaviour {
 		attackSprites [3] = attack4;
 
 		this.soundManager = GameObject.Find ("SoundManager").GetComponent<SoundManager>();
+
 	}
 
 	void Update () {
@@ -79,6 +87,7 @@ public class PlayerController : MonoBehaviour {
 				AttackOn ();
 				enemy.Hit (10);
 			} else {
+				score.ComboFail ();
 				this.health -= 1; 
 			}
 		}
@@ -135,6 +144,7 @@ public class PlayerController : MonoBehaviour {
 				enemy.Hit(1000);
 			} else {
 				enemy.Hit (1000);
+				score.ComboFail ();
 				health -= 1;
 			}
 		}

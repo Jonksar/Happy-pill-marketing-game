@@ -29,6 +29,8 @@ public class Enemy : MonoBehaviour {
 	private const float hitXImpulse = 0;
 	private const float hitYImpulse = 0;
 
+	private GameObject player;
+
 	public static List<Enemy> enemies = new List<Enemy>();
 
 	public void Hit(int damage) {
@@ -58,6 +60,8 @@ public class Enemy : MonoBehaviour {
 		if (manager != null) {
 			sounds = manager.GetComponent<SoundManager>();
 		}
+
+		player = GameObject.Find ("Player");
 	}
 
 	void OnDestroy() {
@@ -102,9 +106,15 @@ public class Enemy : MonoBehaviour {
 		blinkFrameDelta = 3;
 		// animation goes here
 		Invoke("DeathBlink", 0.5f);
+
+
 	}
 
 	private void DieImpulse() {
+
+
+		// Add to kill count
+		player.GetComponent<PlayerController>().score.addKill();
 		env = GameObject.Find ("Environment").GetComponent<Environment> ().pushThisButton;
 
 		if (env == 1)

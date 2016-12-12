@@ -69,7 +69,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  fadeTime: 10
+  fadeTime: 2.1
   maxVolume: 1
   punchSFXs:
   - {fileID: 8300000, guid: 94f1a89722ffe8b44936fc40c5c85fad, type: 3}
@@ -105,11 +105,42 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1e0823406d961cf43b92505855dd1bad, type: 3}
   - {fileID: 8300000, guid: 738c2284575f9f64dbb368faffddcfa9, type: 3}
   - {fileID: 8300000, guid: 228dcaacaef39b348896233d39a42a33, type: 3}
+  glitchSFXs:
+  - {fileID: 8300000, guid: add377ed62c298140b2d17685713b79e, type: 3}
+  - {fileID: 8300000, guid: add377ed62c298140b2d17685713b79e, type: 3}
+  - {fileID: 8300000, guid: add377ed62c298140b2d17685713b79e, type: 3}
+  - {fileID: 8300000, guid: b4467b8b6016dbe42852e267c5f9555f, type: 3}
+  - {fileID: 8300000, guid: b4467b8b6016dbe42852e267c5f9555f, type: 3}
+  - {fileID: 8300000, guid: b4467b8b6016dbe42852e267c5f9555f, type: 3}
+  mentalitySFXs:
+  - {fileID: 8300000, guid: ad53989d056fa6f4193d4d28a4b6b72c, type: 3}
+  - {fileID: 8300000, guid: a81c336b74255a446ad5d556b4da33f5, type: 3}
+  - {fileID: 8300000, guid: a2b01f1a233570e4287683a4d3af2797, type: 3}
+  - {fileID: 8300000, guid: e29d36d79e1afa047b95a80891359987, type: 3}
+  - {fileID: 8300000, guid: 58e47da1fdf6d9841addf8bc1ebce475, type: 3}
+  pianoSFX: {fileID: 8300000, guid: 2b707c2628dbf434cb9fc199543454ff, type: 3}
+  playerDeathSFX:
+  - {fileID: 8300000, guid: 228dcaacaef39b348896233d39a42a33, type: 3}
+  punchSFXvolume: 1
+  monsterHitSFXvolume: 1
+  playerHitSFXvolume: 1
+  glitchSFXvolume: 0.4
+  mentalitySFXvolume: 0.6
+  musicSFXvolume: 1
+  playerDeathSFXVolume: 1
   happyThemes: []
   sadThemes: []
-  menuThemes:
-  - {fileID: 8300000, guid: 8d798775cd65be449bba6722cfcede8c, type: 3}
-  - {fileID: 8300000, guid: a75915762d6bcb045a7f423770cce3d9, type: 3}
+  menuMusic1: {fileID: 8300000, guid: 8d798775cd65be449bba6722cfcede8c, type: 3}
+  menuMusic2: {fileID: 8300000, guid: a75915762d6bcb045a7f423770cce3d9, type: 3}
+  escalationMusic1: {fileID: 8300000, guid: de72d8435e3943e4ba4d55e8e72b5def, type: 3}
+  escalationMusic21: {fileID: 8300000, guid: 676217a4d81e83842b59fe2b707fb5a8, type: 3}
+  escalationMusic22: {fileID: 8300000, guid: a99ac696ef6c02e4fba7fb5db254c325, type: 3}
+  firstBloodMusic: {fileID: 8300000, guid: df104075fff62a24fb47d918fce69e36, type: 3}
+  toFightingTransitionMusic: {fileID: 8300000, guid: aa94ccc9118908b449a99765fba9c3ba,
+    type: 3}
+  fighting1Music: {fileID: 8300000, guid: b1b7c94fd8e2ba147bd1ca6968b40afc, type: 3}
+  fighting2Music: {fileID: 8300000, guid: 75ee1991b35a1314e8eaeadc50bc97ca, type: 3}
+  ChillPillMusic: {fileID: 8300000, guid: 7a7f6ea8d283ec44f9e9e6d16d8c0572, type: 3}
   fader: {fileID: 1229811501090740, guid: 6874be08a5492eb4496089c78aa90ac9, type: 2}
   serialPlayer: {fileID: 1087800306809192, guid: 78e9a1ecb3f749941ace2497ce65af4c,
     type: 2}

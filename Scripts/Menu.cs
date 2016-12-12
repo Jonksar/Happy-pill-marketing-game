@@ -122,6 +122,7 @@ public class Menu : MonoBehaviour {
 
 			case State.GlitchOut: 
 				if (elapsed > glitchOutInterval) {
+					sounds.MenuMusic ();
 					SceneManager.LoadScene (1);
 				}
 				break;

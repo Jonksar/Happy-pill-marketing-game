@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: f43cadc516773724bb9cff978099738e
+timeCreated: 1481512653
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Austiebost Crazy Days
+  fontNames:
+  - Austiebost Crazy Days
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
