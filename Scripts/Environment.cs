@@ -18,6 +18,8 @@ public class Environment : MonoBehaviour {
 	public Sprite enemy3g;
 	public Sprite enemy4g;
 
+	public GameObject obj;
+
 	public Spawner spawnerL;
 	public Spawner spawnerR;
 
@@ -100,6 +102,7 @@ public class Environment : MonoBehaviour {
 
 		if (i == 5) {
 			GetComponent<SpriteRenderer> ().sprite = room5;
+			GameObject o = Instantiate (obj, new Vector3 (-6.21f, 2.5f, 0f), transform.rotation);
 		}
 	}
 		

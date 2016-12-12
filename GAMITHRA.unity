@@ -388,13 +388,11 @@ Prefab:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-<<<<<<< HEAD
     - target: {fileID: 114343921589253252, guid: 777dc35fed24ca646b4094d1d5d85d5e,
         type: 2}
       propertyPath: score
       value: 
       objectReference: {fileID: 351800483}
-=======
     - target: {fileID: 114306312013600038, guid: 777dc35fed24ca646b4094d1d5d85d5e,
         type: 2}
       propertyPath: changeSpeed
@@ -410,7 +408,6 @@ Prefab:
       propertyPath: maxIntensity
       value: 0.45
       objectReference: {fileID: 0}
->>>>>>> correct player sprites
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 777dc35fed24ca646b4094d1d5d85d5e, type: 2}
   m_IsPrefabParent: 0

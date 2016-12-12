@@ -107,6 +107,7 @@ public class PlayerController : MonoBehaviour {
 			attackSpritesTrue [1] = attack2true;
 			attackSpritesTrue [2] = attack3true;
 			attackSpritesTrue [3] = attack4true;
+			spriteRenderer.sprite = idle;
 		} else {
 			attackSprites [0] = gattack1;
 			attackSprites [1] = gattack2;
@@ -120,7 +121,9 @@ public class PlayerController : MonoBehaviour {
 			attackSpritesTrue [1] = gattack2true;
 			attackSpritesTrue [2] = gattack3true;
 			attackSpritesTrue [3] = gattack4true;
+			spriteRenderer.sprite = gidle;
 		}
+
 
 		this.soundManager = GameObject.Find ("SoundManager").GetComponent<SoundManager>();
 

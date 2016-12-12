@@ -127,6 +127,7 @@ MonoBehaviour:
   room2: {fileID: 21300000, guid: 44e53599e328148478e343332d99cc22, type: 3}
   room3: {fileID: 21300000, guid: 92102142143b81a40ba8871b0448dbff, type: 3}
   room4: {fileID: 21300000, guid: 66d17f1eac94b2244870e9db43fa8887, type: 3}
+  room5: {fileID: 21300000, guid: a092a4dc15979c2409a6035daa2e5b20, type: 3}
   enemy1j: {fileID: 21300000, guid: 029116a71e466d547a7592e341a631fd, type: 3}
   enemy2j: {fileID: 21300000, guid: 029116a71e466d547a7592e341a631fd, type: 3}
   enemy3j: {fileID: 21300000, guid: 9924ee4f015d3d54fa48d0b6021ee4ed, type: 3}
