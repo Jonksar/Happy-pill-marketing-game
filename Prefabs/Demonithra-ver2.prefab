@@ -134,8 +134,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   room1Sprite: {fileID: 21300000, guid: a708b95e1e3455d40a09e73eba7ddb90, type: 3}
   room2Sprite: {fileID: 21300000, guid: a708b95e1e3455d40a09e73eba7ddb90, type: 3}
-  room3Sprite: {fileID: 21300000, guid: 9c8e4b52d811a274399987bb3e241d89, type: 3}
-  room4Sprite: {fileID: 21300000, guid: 9c8e4b52d811a274399987bb3e241d89, type: 3}
+  room3Sprite: {fileID: 21300000, guid: d18a23bd1e26a9348bb83528ad24b0cc, type: 3}
+  room4Sprite: {fileID: 21300000, guid: 10438a9c1736efd4f88e2bdc250e4ace, type: 3}
 --- !u!114 &114977435238821720
 MonoBehaviour:
   m_ObjectHideFlags: 1

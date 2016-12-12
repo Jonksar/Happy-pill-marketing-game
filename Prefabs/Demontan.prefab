@@ -141,7 +141,7 @@ MonoBehaviour:
   room1Sprite: {fileID: 21300000, guid: 029116a71e466d547a7592e341a631fd, type: 3}
   room2Sprite: {fileID: 21300000, guid: 029116a71e466d547a7592e341a631fd, type: 3}
   room3Sprite: {fileID: 21300000, guid: 9924ee4f015d3d54fa48d0b6021ee4ed, type: 3}
-  room4Sprite: {fileID: 21300000, guid: 9924ee4f015d3d54fa48d0b6021ee4ed, type: 3}
+  room4Sprite: {fileID: 21300000, guid: 418b3f6f9ff6fa549a62532ed42a4861, type: 3}
 --- !u!212 &212283090342979570
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -52,8 +52,7 @@ public class Environment : MonoBehaviour {
 		if (i == 1) {
 			GetComponent<SpriteRenderer> ().sprite = room1;
 			foreach (Enemy x in Enemy.enemies) {
-				//bug: changing everything to demontan now but should check if gamithra or joonatan
-				if (x.name == "j")
+				if (x.demon == "j")
 					x.GetComponent<SpriteRenderer> ().sprite = enemy1j;
 				else
 					x.GetComponent<SpriteRenderer> ().sprite = enemy1g;
@@ -65,7 +64,7 @@ public class Environment : MonoBehaviour {
 		if (i == 2) {
 			GetComponent<SpriteRenderer> ().sprite = room2;
 			foreach (Enemy x in Enemy.enemies) {
-				if (x.name == "j")
+				if (x.demon == "j")
 					x.GetComponent<SpriteRenderer> ().sprite = enemy2j;
 				else
 					x.GetComponent<SpriteRenderer> ().sprite = enemy2g;
@@ -77,7 +76,7 @@ public class Environment : MonoBehaviour {
 		if (i == 3) {
 			GetComponent<SpriteRenderer> ().sprite = room3;
 			foreach (Enemy x in Enemy.enemies) {
-				if (x.name == "j")
+				if (x.demon == "j")
 					x.GetComponent<SpriteRenderer> ().sprite = enemy3j;
 				else
 					x.GetComponent<SpriteRenderer> ().sprite = enemy3g;
@@ -90,7 +89,7 @@ public class Environment : MonoBehaviour {
 			GetComponent<SpriteRenderer> ().sprite = room4;
 			foreach (Enemy x in Enemy.enemies) {
 
-				if (x.name == "j")
+				if (x.demon == "j")
 					x.GetComponent<SpriteRenderer> ().sprite = enemy4j;
 				else
 					x.GetComponent<SpriteRenderer> ().sprite = enemy4g;

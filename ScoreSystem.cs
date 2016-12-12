@@ -64,7 +64,7 @@ public class ScoreSystem : MonoBehaviour {
 			ComboFail ();
 		}
 
-		Debug.Log (failTime);
+		//Debug.Log (failTime);
 		failLiteralRectT.localScale = 3f *Vector3.one * failSizeCurve.Evaluate(Mathf.Clamp01(failTime)); 
 	}
 
