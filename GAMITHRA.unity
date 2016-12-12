@@ -388,11 +388,29 @@ Prefab:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 114343921589253252, guid: 777dc35fed24ca646b4094d1d5d85d5e,
         type: 2}
       propertyPath: score
       value: 
       objectReference: {fileID: 351800483}
+=======
+    - target: {fileID: 114306312013600038, guid: 777dc35fed24ca646b4094d1d5d85d5e,
+        type: 2}
+      propertyPath: changeSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114306312013600038, guid: 777dc35fed24ca646b4094d1d5d85d5e,
+        type: 2}
+      propertyPath: minIntensity
+      value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 114306312013600038, guid: 777dc35fed24ca646b4094d1d5d85d5e,
+        type: 2}
+      propertyPath: maxIntensity
+      value: 0.45
+      objectReference: {fileID: 0}
+>>>>>>> correct player sprites
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 777dc35fed24ca646b4094d1d5d85d5e, type: 2}
   m_IsPrefabParent: 0
@@ -450,6 +468,12 @@ Prefab:
       propertyPath: spawnerR
       value: 
       objectReference: {fileID: 1482367066}
+    - target: {fileID: 114034097946109872, guid: fbe05fc19afb5174789fe58bc989756d,
+        type: 2}
+      propertyPath: room5
+      value: 
+      objectReference: {fileID: 21300000, guid: a092a4dc15979c2409a6035daa2e5b20,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fbe05fc19afb5174789fe58bc989756d, type: 2}
   m_IsPrefabParent: 0

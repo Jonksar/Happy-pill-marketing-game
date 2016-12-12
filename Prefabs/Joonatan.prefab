@@ -253,12 +253,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idle: {fileID: 21300000, guid: b2e9d3802eabee64a9881d2a41b1dbbc, type: 3}
+  idlemono: {fileID: 21300000, guid: 50ca3737cba5d334983a93309e5fdfd3, type: 3}
+  idletrue: {fileID: 21300000, guid: 8de5955d65fc35346ac95a2eb30c92e6, type: 3}
   attack1: {fileID: 21300000, guid: b631634f0d84c2b4795936aff069f6af, type: 3}
   attack2: {fileID: 21300000, guid: 073def323b5b74d449d0fc2a599723f8, type: 3}
   attack3: {fileID: 21300000, guid: 62dc2488945a3db4f972c63811e634bb, type: 3}
   attack4: {fileID: 21300000, guid: db2104ec74187b54fa6d6c79e2dcfe7f, type: 3}
+  attack1mono: {fileID: 21300000, guid: ea6d17474217377408a3bf5b7017241c, type: 3}
+  attack2mono: {fileID: 21300000, guid: be06a18e75686924482822ae84e17761, type: 3}
+  attack3mono: {fileID: 21300000, guid: 2e6e86a8da4d1344ea4b6f2e97e4c426, type: 3}
+  attack4mono: {fileID: 21300000, guid: e57fce1465fc282488b72ea9da87066c, type: 3}
+  attack1true: {fileID: 21300000, guid: fb201350c102cb54893cf8b605063a61, type: 3}
+  attack2true: {fileID: 21300000, guid: bd6406bf178a77f48bc202d2aeba768e, type: 3}
+  attack3true: {fileID: 21300000, guid: 0fd9db53cc9cb9149b832ed5ec3b5b4d, type: 3}
+  attack4true: {fileID: 21300000, guid: a6c885761cb423a4dada6c2479371294, type: 3}
   wallslide: {fileID: 21300000, guid: 8f79bc9eb5c8c8d44b088de54a0ca01a, type: 3}
+  wallslidemono: {fileID: 21300000, guid: a0874e6107c8de8448e46fbda4fb481a, type: 3}
+  wallslidetrue: {fileID: 21300000, guid: de282e313a6d0cf409ab4e60d14a4e86, type: 3}
   dead: {fileID: 21300000, guid: f30255d36ca071844a89e07432cb2760, type: 3}
+  deadmono: {fileID: 21300000, guid: ffe99fb360175754a8b0775074aa8add, type: 3}
+  deadtrue: {fileID: 21300000, guid: c9f3d28204b342f41af8bf56dc1e8f89, type: 3}
+  gidle: {fileID: 21300000, guid: 32092a818aee2594593a8766ad5607b3, type: 3}
+  gidlemono: {fileID: 21300000, guid: d7532542e4161fe42845179d789d6d7f, type: 3}
+  gidletrue: {fileID: 21300000, guid: 807ed068bde537c44ace8df0787f81cc, type: 3}
+  gattack1: {fileID: 21300000, guid: a076eefa31d8eaa48bb4f9204890415a, type: 3}
+  gattack2: {fileID: 21300000, guid: a0ae2c60690ea844ab8ffe0cdab463f8, type: 3}
+  gattack3: {fileID: 21300000, guid: ddde27f827e1dbf429f684d143dce4c2, type: 3}
+  gattack4: {fileID: 21300000, guid: 645c81dc174a07b45b8efe26e7470e50, type: 3}
+  gattack1mono: {fileID: 21300000, guid: fe472a18b974a5247b729c5237d731e9, type: 3}
+  gattack2mono: {fileID: 21300000, guid: b3339594b3d9a244f808c1f10dbaae3e, type: 3}
+  gattack3mono: {fileID: 21300000, guid: 53a351daf018c7346bdea1135287fc8d, type: 3}
+  gattack4mono: {fileID: 21300000, guid: 4361d74a9ca786b4698c2b8c3f9af99e, type: 3}
+  gattack1true: {fileID: 21300000, guid: 5636c2505a3ade2408888801c749ab85, type: 3}
+  gattack2true: {fileID: 21300000, guid: 4e6c1b1a32c6cbc4e9e89526bac5db32, type: 3}
+  gattack3true: {fileID: 21300000, guid: 421ea66a558f5484293f9b3987e636a5, type: 3}
+  gattack4true: {fileID: 21300000, guid: d914d444e0788694188189e323a65dc4, type: 3}
+  gwallslide: {fileID: 21300000, guid: 1d3a1605f88e80e42923dac91f84a969, type: 3}
+  gwallslidemono: {fileID: 21300000, guid: c67b4b97c979c32419f7f9a145d540f5, type: 3}
+  gwallslidetrue: {fileID: 21300000, guid: c5275f8a220e39640923122aca59048f, type: 3}
+  gdead: {fileID: 21300000, guid: 4f0d330b3c6d1694f85a78f8792801cc, type: 3}
+  gdeadmono: {fileID: 21300000, guid: 43329da328a940a4085afe0b3cdd41ea, type: 3}
+  gdeadtrue: {fileID: 21300000, guid: 7fb836caec230ad48ba79acf55b5dd8e, type: 3}
   health: 8
   isAlive: 1
   score: {fileID: 114286297396342114}
