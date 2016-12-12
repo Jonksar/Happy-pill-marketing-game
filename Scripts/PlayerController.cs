@@ -302,6 +302,7 @@ public class PlayerController : MonoBehaviour {
 			else if (environment == 4)
 				spriteRenderer.sprite = gdeadtrue;
 		}
+		//transform.position = new Vector3 (transform.position.x, transform.position.y+0.2f, transform.position.z);
 		soundManager.PlayPlayerDeath ();
 	}
 
